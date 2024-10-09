@@ -8,13 +8,13 @@ A feladatok megoldásához az alábbi telepített szoftverekre van szükség (al
 
 - [Visual Studio](https://visualstudio.microsoft.com/vs/community/)
     - `ASP.NET and web development ` workload
-    - `Node.js development` workload (nem szükséges ha Node.js már korábban telepítésre került)
     - `.NET 8.0 Runtime` és `.NET SDK`
+- [Node.js](https://nodejs.org/en/download/prebuilt-installer)
 - [Git](https://git-scm.com/)
 
 ## Előkészület
 
-A feladatok megoldása során ne felejtsd el követni a feladat beadás folyamatát [Github](../../tudnivalok/github/GitHub.md).
+A feladatok megoldása során ne felejtsd el követni a feladatbeadás folyamatát [Github](../../tudnivalok/github/GitHub.md).
 
 ### Git repository létrehozása és letöltése
 
@@ -27,7 +27,7 @@ A feladatok megoldása során ne felejtsd el követni a feladat beadás folyamat
 
 A feladat elkészítése során egy lokális LLM modellt fogunk használni. Ennek a módszernek az előnye, hogy nincs szükséged regisztrációra, nem kell előfizetni semmilyen modellre, és nincsenek korlátok abban, hogy hányszor tesztelsz. Ugyanakkor hátránya, hogy mivel a modellt a saját gépeden kell futtatni, ezért a számítógéped erőforrásai befolyásolják a futás gyorsaságát. A lentebb felsoroltak közül bármelyik modellt használhatod, ezek mindegyike eltérő rendszerkövetelményekkel rendelkeznek. A kisebb modellek esetében kisebb a gépigény, viszont pontatlanabb válaszokat is adhat, míg a nagyobb modellek pontosabbak, de akár több perces válaszidőre is számíthatsz.
 
-A feladat megoldásához egy `LLama` modellt fogunk használni, amihez a modell fájlt `GGUF` formátumban kell beszereznünk. Modelleket a [https://huggingface.co/](https://huggingface.co/) oldalon tudod böngészni. A feladat megoldásához az alábbi modelleket javasoljuk:
+A feladat megoldásához egy `LLama` modellt fogunk használni, amihez a modell fájlt `GGUF` formátumban kell beszereznünk. Modelleket a [https://huggingface.co/](https://huggingface.co/) oldalon tudsz böngészni. A feladat megoldásához az alábbi modelleket javasoljuk:
 
 - Kis modell: [https://huggingface.co/bartowski/Llama-3.2-1B-Instruct-GGUF](https://huggingface.co/bartowski/Llama-3.2-1B-Instruct-GGUF)
 - Közepes modell: [https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF](https://huggingface.co/bartowski/Llama-3.2-3B-Instruct-GGUF)
@@ -59,13 +59,37 @@ A futtatáshoz az `AI` és a `Server` projekteket kell elindítani:
 
     ![](assets/start.jpg)
 
+## Az elkészítendő alkalmazás
+
+A labor során egy olyan LLM-et használó fullstack alkalmazást kell önállóan elkészítened, mely a munkaerőtoborzással kapcsolatos egyes feladatokat könnyíti meg. Az alkalmazásban nincs szükség authentikációra, adatbázisra, vagy perzisztenciára. Az alkalmazás állapot mentes. Az elkészülő HR asszisztens alkalmazás célja, hogy támogassa a HR munkatársakat a beérkező jelentkezések feldolgozására. A markdown formátumban megküldött önéletrajzok alapján, a szoftvernek képesnek kell lennie a következő feladatok megoldására:
+
+- A jelentkező kulcs kompetenciáinak kigyűjtése
+- Azoknak a pozícióknak a meghatározása, melyekre a jelentkező alkalmas lehet
+- A jelentkező legfontosabb adatainak táblázatba rendezése
+- Lehetséges interjú kérdések generálása
+- Automatikus levél generálása interjúra törénő behíváshoz
+
+
+## 0. feladat
+
+Az alkalmazás funkcióinak teszteléséhez elengedhetetlen egy markdown önéletrajz. Az első feladat során ezt kell létrehoznod, hogy a későbbiekben fel tudd majd használni. Az önéletrajz mindenképp tartalmazza a jelentkező nevét és egyéb fontos adatait, a tanulmányainak és korábbi munkatapasztalatainak bemutatását, valamint főbb készségeit. Az adatok tetszőlegesen megadhatók, formailag azonban mindenképp kövesse az önéletrajzok főbb szempontjait. Az önéletrajz létrehozására használható a kiinduló kliens *Editor* felülete.
+
+??? info "Tipp"
+    A Client/src/App.tsx fájlban megadható default önéletrajz, amivel a tesztelés tovább egyszerűsíthető/gyorsítható.
+
+### Beadandó
+
+!!! example "0. feladat beadandó (0 pont)"
+    Készíts képernyőképet az elkészült önéletrajzról, majd f0.png néven másold a repository gyökerébe!
+
+
 ## X. feladat
 
 A feladat leírása ...
 
 Aminek itt kell lennie a feladatokban:
 
-- Markdown CV létrehozása
+- Markdown CV létrehozása - pipa
 - Service létrehozása és regisztrálása (+ modellek)
 - Controller létrehozása és service meghívása
 - Promptok megírása
