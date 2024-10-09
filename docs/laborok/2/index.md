@@ -75,29 +75,27 @@ A labor során egy olyan LLM-et használó fullstack alkalmazást kell önálló
 Az alkalmazás funkcióinak teszteléséhez elengedhetetlen egy markdown önéletrajz. Az első feladat során ezt kell létrehoznod, hogy a későbbiekben fel tudd majd használni. Az önéletrajz mindenképp tartalmazza a jelentkező nevét és egyéb fontos adatait, a tanulmányainak és korábbi munkatapasztalatainak bemutatását, valamint főbb készségeit. Az adatok tetszőlegesen megadhatók, formailag azonban mindenképp kövesse az önéletrajzok főbb szempontjait. Az önéletrajz létrehozására használható a kiinduló kliens *Editor* felülete.
 
 ??? info "Tipp"
-    A Client/src/App.tsx fájlban megadható default önéletrajz, amivel a tesztelés tovább egyszerűsíthető/gyorsítható.
+    A `Client/src/App.tsx` fájlban megadható default önéletrajz, amivel a tesztelés tovább egyszerűsíthető/gyorsítható.
 
 ### Beadandó
 
 !!! example "0. feladat beadandó (0 pont)"
-    Készíts képernyőképet az elkészült önéletrajzról, majd f0.png néven másold a repository gyökerébe!
+    Készíts képernyőképet az elkészült önéletrajzról, majd **`f0.png`** néven másold a repository gyökerébe!
 
 ## 1. feladat
 
-Első lépésben biztosítsd a szerver számára az AI modellel való kommunikáció alapjait. Vizsgáld meg az AI modell API leírását (/api/Chat), különös tekintettel a kérés törzsének elvárt felépítésére. Hozz létre egy service interface-t, az ezt megvalósító service osztályt, valamint a szükséges modelleket. A service valósítsa meg a megfelelő HTTP kérést, mely segítségével tetszőleges prompt küldhető az AI modell felé. A feladat végén a service-t regisztrálni is kell.
+Első lépésben biztosítsd a szerver számára az AI modellel való kommunikáció alapjait. Vizsgáld meg az AI modell API leírását (`/api/Chat`), különös tekintettel a kérés törzsének elvárt felépítésére. Hozz létre egy service interface-t, az ezt megvalósító service osztályt, valamint a szükséges modelleket. A service valósítsa meg a megfelelő HTTP kérést, mely segítségével tetszőleges prompt küldhető az AI modell felé. A feladat végén a service-t regisztrálni is kell a DI (Dependency Injection) konténerbe.
 
 ??? info "Segítség"
-    Az */api/Chat/Stream* végponttal egyelőre nem kell foglalkoznod, az csak az opcionális feladathoz tartozik.
+    Az `/api/Chat/Stream` végponttal egyelőre nem kell foglalkoznod, az csak az opcionális feladathoz tartozik.
 
 ### Beadandó
 
 !!! example "1. feladat beadandó (10 pont)"
-    Egy-egy képernyőképpel alátámasztva demonstráld az alábbiak megoldását:
+    Kommitold a változtatásokat, különös tekintettel az alábbiakra:
 
     * Service interface és az azt implementáló service osztály megvalósítása
-    * Modell(ek) létrehozása
-    
-    A készített képernyőképeket másold **`f1-1.png`** és **`f1-2.png`** néven a repository gyökerébe!
+    * Modell osztály(ok)
 
 ## 2. feladat
 
@@ -105,28 +103,33 @@ Ebben a feladatban a kliens és a szerver közötti kommunikációt kell biztos�
 
 Az alábbi felsorolás tartalmazza, hogy a szerver mely API végpontjai milyen funkciókat kell, hogy megvalósítsanak:
 
-- */api/HR/competences*: A kérésben kapott CV alapján listázza a jelentkező kulcs kompetenciáit. A válasz egy 3-5 pontból álló felsorolás legyen markdown formátumban. 
-- */api/HR/positions*: A kérésben kapott CV alapján határozza meg, hogy a jelentkező milyen pozíciók betöltésére lehet alkalmas. 
-- */api/HR/data*: A kérésben kapott CV alapján gyűjtse táblázatba a jelentkező legfontosabb adatait. A válasz egy markdown formátumban meghatározott kitöltött táblázat legyen.
-- */api/HR/questions*: A kérésben kapott CV alapján fogalmazzon meg lehetséges kérdéseket, amiket érdemes lehet feltenni az állásinterjú során.
-- */api/HR/invitation*: Generáljon meghívólevelet a kérésben kapott CV "tulajdonosa" részére, ami alkalmas egy interjúra történő behívásra.
+- `/api/HR/competences`: A kérésben kapott CV alapján listázza a jelentkező kulcs kompetenciáit. A válasz egy 3-5 pontból álló felsorolás legyen markdown formátumban. 
+- `/api/HR/positions`: A kérésben kapott CV alapján határozza meg, hogy a jelentkező milyen pozíciók betöltésére lehet alkalmas. 
+- `/api/HR/data`: A kérésben kapott CV alapján gyűjtse táblázatba a jelentkező legfontosabb adatait. A válasz egy markdown formátumban meghatározott kitöltött táblázat legyen.
+- `/api/HR/questions`: A kérésben kapott CV alapján fogalmazzon meg lehetséges kérdéseket, amiket érdemes lehet feltenni az állásinterjú során.
+- `/api/HR/invitation`: Generáljon meghívólevelet a kérésben kapott CV "tulajdonosa" részére, ami alkalmas egy interjúra történő behívásra.
 
 ??? info "Tipp"
-    Az egyes végpontoknak által meghívott service osztály Dependency Injection (DI) használatával legyen regisztrálva.
+    Az egyes végpontok által meghívott service osztály Dependency Injection (DI) használatával elkérhető az alkalmazástól.
 
 ### Beadandó
 
 !!! example "2. feladat beadandó (15 pont)"
-    Képernyőképekkel alátámasztva demonstráld a controller osztály megvalósítását:
+    Kommitold a változtatásokat, különös tekintettel az alábbiakra:
+    
+    * A Controller osztály kódja
+    * A megvalósított promptok
 
-    * Controller osztály kódja
-    * Server API egyes végpontjait meghívva kapott eredmények (swagger segítségével kipróbálva). Minden végponthoz készíts külön képernyőképet.
+    Képernyőképekkel alátámasztva demonstráld a Controller osztály helyes működését:
+    
+    * Server API egyes végpontjait meghívva kapott eredmények (swagger segítségével kipróbálva).
+    * Minden végponthoz készíts külön képernyőképet.
 
-    A készített képernyőképet másold **`f2-1.png`** és **`f2-2.png`** – **`f2-6.png`** néven a repository gyökerébe!
+    A készített képernyőképeket másold **`f2-1.png`** – **`f2-5.png`** néven a repository gyökerébe!
 
 ## 3. feladat
 
-Az alkalmazás megvalósításának utolsó lépéseként tedd működővé az egyes funkciókat az előző feladatban létrehozott API hívások segítségével. Ehhez egészítsd ki a kliens service osztályát a megfelelő HTTP kérésekkel.
+Az alkalmazás megvalósításának utolsó lépéseként tedd működővé az egyes funkciókat az előző feladatban létrehozott API hívások segítségével. Ehhez egészítsd ki a kliens Service osztályát a megfelelő HTTP kérésekkel.
 
 ??? info "Tipp"
     A megoldás színvonalát emeli, ha figyelsz a felesleges kódismétlés elkerülésére.
@@ -134,32 +137,46 @@ Az alkalmazás megvalósításának utolsó lépéseként tedd működővé az e
 ### Beadandó
 
 !!! example "3. feladat beadandó (10 pont)"
-    Képernyőképekkel alátámasztva demonstráld a kliens service osztályának megvalósítását:
+    Kommitold a változtatásokat, különös tekintettel az alábbiakra:
 
-    * Kliens service osztályának kódja
+    * Kliens Service osztálya
+
+    Képernyőképekkel alátámasztva demonstráld a kliens Service osztályának helyes működését:
+
     * Kliens *Overview* oldala az eredményekkel
     * Kliens *Interview* oldala az eredményekkel
 
-    A készített képernyőképet másold **`f3-1.png`**, **`f3-2.png`** és **`f3-3.png`** néven a repository gyökerébe!
+    A készített képernyőképeket másold **`f3-1.png`** és **`f3-2.png`** néven a repository gyökerébe!
 
 
 ## Opcionális feladat
 
-Opcionális feladatként alakítsd át/egészítsd ki úgy az alkalmazást, hogy az AI modell válaszát JSON helyett stream formájában kapod meg. Ennek eredményeként a kliens felületén az egyes funkciók válaszként kapott szövege nem egyszerre, hanem folyamatosan "gépelve" kell, hogy megjelenjen. (Hasonlóképp, mint pl. a ChatGPT esetén.)
+Opcionális feladatként alakítsd át/egészítsd ki úgy az alkalmazást, hogy az AI modell válaszát JSON helyett stream formájában kapod meg. Ennek eredményeként a kliens felületén az egyes funkciók válaszként kapott szövege nem egyszerre, hanem folyamatosan "gépelve" kell, hogy megjelenjen. (Hasonlóképp, mint pl. a ChatGPT esetén.) Segítségként, az AI projektben már minden adott, ott nem kell módosítani semmit.
+
+!!! warning "Fontos"
+    Mielőtt ennek a feladatnak neki kezdesz, mindenképp commitolj! Így ha módosítasz, vagy törölsz valamit, akkor is lesz nyoma, hogy korábban hogyan csináltad.
+
 
 ??? info "Tipp"
     Feladatok checklist:
 
-    - JSON API lecserélése Stream API-ra.
-    - Kliensben service lecserélése.
-    - Az oldalakon a megfelelő metódus meghívása. 
+    - JSON API (`/api/Chat`) lecserélése Stream API-ra (`/api/Chat/Stream`).
+    - Service és Controller megfelelő módosítása.
+    - Kliens Service megfelelő módosítása.
+    - Az oldalakon a megfelelő metódus meghívása (tipp: a `Module` komponensnek van egy `streamGetter` attribútuma is)
 
 ### Beadandó
 
 !!! example "Opcionális feladat beadandó (10 pont)"
+    Kommitold a változtatásokat, különös tekintettel az alábbiakra:
+
+    * Server Service
+    * Server Controller
+    * Kliens Service
+    * Kliens Oldalak
+
     Egy-egy képernyőképpel alátámasztva demonstráld az alábbiak megoldását:
 
-    * Módosított kódfájlok (módosításokat jól láthatóan jelölve)
-    * Kliens oldalairól képernyőkép, ahol a válaszoknak még csak egy része érkezett meg.
+    * Készíts egy-egy képernyőképet a kliens oldalról, ahol az egyik válasznak még csak egy része érkezett meg, illetve amikor már az egész megérkezett.
 
-    A készített képernyőképeket másold **`fo-x.png`** néven a repository gyökerébe! A korábbiakhoz hasonlóan x a készített kép sorszáma legyen, 1-től kezdődően.
+    A készített képernyőképeket másold **`fo-1.png`** és **`fo-2.png`** néven a repository gyökerébe!
