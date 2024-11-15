@@ -54,7 +54,7 @@ Szükség esetén jelentkezz be a Google Accountoddal, valamint engedélyezd a p
 Az előbb létrehozott projektben valósíts meg egy amőba játékot a Gemini segítségével!
 
 !!! info "Nem kell túlbonyolítani"
-    A feladat megoldható akár egy kérdéssel, és a válasz tartalmainak bemásolásával, további javítások nélkül.
+    A feladat megoldható akár egy prompttal/kérdéssel, és a válasz tartalmainak bemásolásával, további javítások nélkül.
 
 !!! example "2a. feladat beadandó (1 pont)"
     * Kommitold a változtatásokat.
