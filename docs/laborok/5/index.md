@@ -28,7 +28,7 @@ A feladatok megoldása során ne felejtsd el követni a feladatbeadás folyamat�
 4. A megjelenő *Billing* oldalon állíts be *Budget Alert*-et 40 dollárra. Így értesítészt fogsz kapni, ha a rendelkezésre álló 60 dollárból 40-et már elhasználtál.
 
 !!!danger "Kreditek használata"
-	Az ezután megjelenő *Billing* oldalon tudod követni a labor során felhasznált krediteket. Ezt az oldalt figyeld folyamatosan, és ha szükséges szüntess meg használt erőforrásokat!
+	Az ezután megjelenő *Billing* oldalon tudod követni a labor során felhasznált krediteket. Ezt az oldalt figyeld folyamatosan, és ha szükséges szüntess meg használt erőforrásokat! Ha pontosan követed az útmutatót, nem fogod túllépni a rendelkezésre álló kreditmennyiséget.
 
 A következőkben egy AutoML tanítást fogunk elvégezni a Google Cloud Vertex AI szolgáltatása segítségével. Ha bármikor elakadnál, [itt](https://cloud.google.com/vertex-ai/docs/tutorials/image-classification-automl/overview?authuser=0) tudsz további segítséget találni.
 
@@ -55,7 +55,7 @@ gcloud services enable iam.googleapis.com  compute.googleapis.com notebooks.goog
 
 6. Adj jogokat a felhasználói fiókodnak. Az alábbi kódban cseréld le
     - a **PROJECT_ID**-t a saját projekt azonosítódra,
-    - a **USER_IDETIFIER**-t a saját bejelentkezett usered e-mail címére (a jobb felső sarokban vagy az *IAM & Admin* oldalon tudod ellenőrizni),
+    - a **USER_IDENTIFIER**-t a saját bejelentkezett usered e-mail címére (a jobb felső sarokban vagy az *IAM & Admin* oldalon tudod ellenőrizni),
     - a **ROLE**-t először a ```roles/aiplatform.user``` értékre, majd a következő futtatásnál a ```roles/storage.admin``` értékre.
 
 ```bash
