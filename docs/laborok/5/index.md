@@ -36,8 +36,8 @@ A következőkben egy AutoML tanítást fogunk elvégezni a Google Cloud Vertex 
 ## Projekt létrehozása
 
 1. Navigálj a Google Cloud [projekt választó felületére](https://console.cloud.google.com/projectselector2/home/dashboard?authuser=0).
-2. Hozz létre egy új projektet ```AMI Labor NEPTUN``` néven, ahol a NEPTUN helyett a saját Neptun kódod szerepel. **Fontos, hogy az a Billing Account for Education legyen kiválasztva, ahol a kreditek találhatók!**
-   Az oldal tetején található keresőjébe az Account management keresőszót beírva és az Account management(Billing) opciót kiválasztva ellenőrizheted, hogy valóban a megfelelő Billing Accounthoz jött-e létre a projekt. 
+2. Hozz létre egy új projektet ```AMI Labor NEPTUN``` néven, ahol a NEPTUN helyett a saját Neptun kódod szerepel. **Fontos, hogy az a Billing Account for Education legyen kiválasztva, ahol a kreditek találhatók!**  
+   Az oldal tetején található keresőjébe az *Account management* keresőszót beírva és az *Account management(Billing)* opciót kiválasztva ellenőrizheted, hogy valóban a megfelelő Billing Accounthoz jött-e létre a projekt. 
 4. Nyissuk meg a [Cloud Shellt](https://ssh.cloud.google.com/cloudshell/editor?authuser=0), amely egy böngészőben használható interaktív shell az erőforrások és projektek menedzselésére.
 5. Másold be az alábbi kódot a konzolba, lecserélve a **PROJECT_ID**  a saját projekted azonosítójára. Ha nem találod a Projekt ID-t, [itt](https://cloud.google.com/vertex-ai/docs/tutorials/tabular-bq-prediction/prerequisites?authuser=0#find-project-id) találsz segítséget.
 
