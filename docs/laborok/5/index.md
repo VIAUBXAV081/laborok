@@ -76,7 +76,7 @@ A fenti kód Vertex AI erőforrásokhoz és Cloud Storagehoz ad hozzáférést a
 4. Adattípusnak az **Image**, célnak a **Single-label classification** legyen kiválasztva.
 5. Válasszunk egy hozzánk közel eső régiót az erőforrásainknak (pl. **europe-west4**).
 6. A **Create** gomb megnyomásával hozzuk létre az üres adathalmazt.
-7. Az adathalmaz létrejötte után a *Data Import*nézetben válasszuk ki a **Select import files from Cloud Storage**, opciót, és adjuk meg az alábbi csv fájl elérési útvonalát az **Import file path** mezőben (a csv fájl egy Google Cloud Bucketben található):
+7. Az adathalmaz létrejötte után a *Data Import* nézetben válasszuk ki a **Select import files from Cloud Storage** opciót, és adjuk meg az alábbi csv fájl elérési útvonalát az **Import file path** mezőben (a csv fájl egy Google Cloud Bucketben található):
 ```
 gs://cloud-samples-data/ai-platform/flowers/flowers.csv
 ```
