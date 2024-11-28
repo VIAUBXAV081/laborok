@@ -25,7 +25,7 @@ A feladatok megoldása során ne felejtsd el követni a feladatbeadás folyamat�
 1. A Moodle-ben található linken keresztül igényelj kupont a `@edu.bme.hu` végződésű e-mail címedre.
 2. Erősítsd meg az igénylést a kapott e-mailben.
 3. A következő beérkező e-mail alapján aktivált a krediteket.
-4. A megjelenő *Billing* oldalon állíts be *Budget Alert*-et 40 dollárra. Így értesítészt fogsz kapni, ha a rendelkezésre álló 60 dollárból 40-et már elhasználtál.
+4. A megjelenő *Billing* oldalon állíts be *Budget Alert*-et 30 dollárra. Így értesítészt fogsz kapni, ha a rendelkezésre álló 50 dollárból 30-et már elhasználtál.
 
 !!!danger "Kreditek használata"
 	Az ezután megjelenő *Billing* oldalon tudod követni a labor során felhasznált krediteket. Ezt az oldalt figyeld folyamatosan, és ha szükséges szüntess meg használt erőforrásokat! Ha pontosan követed az útmutatót, nem fogod túllépni a rendelkezésre álló kreditmennyiséget. Az útmutató nem pontos követéséből fakadó kredittúllépés a hallgató felelőssége.
