@@ -22,4 +22,4 @@ A 2. verzió készíthető egy új notebook-ba. (Tehát ekkor összesen két not
 
 Az extra feladat 3. verziójának választása esetén pedig elhelyezendő egy link az alap notebook-ban, ami a videóra mutat. (Tehát ekkor egy notebook kerül beadásra a végén egy linkkel.)
 
-Bármilyen kérdést tegyetek fel bátran a Teams csoportban, hogy tanulhassunk egymás kérdéseiből.
+_Bármilyen kérdést tegyetek fel bátran a Teams csoportban, hogy tanulhassunk egymás kérdéseiből!_
