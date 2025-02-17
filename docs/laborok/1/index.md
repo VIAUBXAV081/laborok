@@ -1,4 +1,4 @@
-# Első labor
+# Első labor - Gépi látás
 
 Itt található az első labor leírása.
 
