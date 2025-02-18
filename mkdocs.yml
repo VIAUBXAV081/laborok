@@ -86,6 +86,7 @@ nav:
       - tudnivalok/github/GitHub-credentials.md
       - tudnivalok/github/contributing.md
   - "Laborok":
+      - laborok/1/index.md 
       - laborok/2/index.md
       - laborok/3/index.md
       - laborok/4/index.md
