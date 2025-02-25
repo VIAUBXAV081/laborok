@@ -1,6 +1,6 @@
 # Tárgy ismertető
 
-A tárgykövetelményeket lásd a [hivatalos tantárgyi adatlapon](https://portal.vik.bme.hu/kepzes/targyak/VIAUBXAV081/).
+A tárgykövetelményeket lásd a [hivatalos tantárgyi adatlapon](https://portal.vik.bme.hu/kepzes/targyak/VIAUBXAV081-00).
 
 A laborok sorrendjét és a beadások határidejét Moodle-ben találod.
 
