@@ -12,7 +12,7 @@ Az extra feladat (ami a megajánlott jegyhez járulhat hozzá) választható: Py
 
 **Beadási információ**
 
-Lényeges, hogy az egyes vizualizációk és print-elt szövegek is a beadás részét képezik (confusion matrix, tanulási görbe, precision, recall, stb.). Így a beadott notebook-ból ezek ne legyenek törölve. (Tehát alapból egy notebook a beadandó.)
+Lényeges, hogy az egyes vizualizációk és print-elt szövegek is a beadás részét képezik (confusion matrix, tanulási görbe, precision, recall, stb.). Így a beadott notebook-ból ezek ne legyenek törölve. (Tehát alapból egy notebook a beadandó.) Ennek a neve legyen olyan, hogy tartalmazza a nevet, neptun kódot. Formátum: Pelda_Peter_ABC123.ipynb
 
 **Beadási információ az extra feladathoz.**
 
