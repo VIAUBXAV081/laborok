@@ -82,7 +82,7 @@ Az alkalmazás funkcióinak teszteléséhez elengedhetetlen egy markdown önéle
 !!! example "0. feladat beadandó (0 pont)"
     Készíts képernyőképet az elkészült önéletrajzról, majd **`f0.png`** néven másold a repository gyökerébe!
 
-## 1. feladat #
+## 1. feladat
 
 Első lépésben biztosítsd a szerver számára az AI modellel való kommunikáció alapjait az alábbiak szerint.
 
@@ -92,7 +92,7 @@ Első lépésben biztosítsd a szerver számára az AI modellel való kommuniká
 4. A feladat végén az elkészült service-t regisztrálni is kell a DI (Dependency Injection) konténerbe.
 
     ??? info "Tipp"
-        A DI konténerbe service-t regisztrálni a `Main` függvényen belül, az `AddScoped` függvény meghívásával lehet.
+        A DI konténerbe service-t regisztrálni a `Main` függvényen belül, az `AddScoped` vagy `AddTransient` függvény meghívásával lehet.
 
 ??? info "Segítség"
     Az `/api/Chat/Stream` végponttal egyelőre nem kell foglalkoznod, az csak az opcionális feladathoz tartozik.
@@ -126,7 +126,7 @@ A megoldás főbb lépései a következők:
     - A service felhasználásával küldje el a promptot az AI modellnek.
 
     ??? info "Tipp"
-        A prom létrehozása során tartsd szem előtt a felesleges kódduplikáció elkerülését. A modell használta során az AI projekt felé küldött HTTP kérések azonos felépítésű, de különböző tartalmú promptokat fognak tartalmazni.
+        A prompt létrehozása során tartsd szem előtt a felesleges kódduplikáció elkerülését. A modell használata során az AI projekt felé küldött HTTP kérések azonos felépítésű, de különböző tartalmú promptokat fognak tartalmazni.
 
     
 
