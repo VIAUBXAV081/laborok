@@ -951,7 +951,7 @@
 <li><a href="https://git-scm.com/">Git</a></li>
 </ul>
 <h2 id="elokeszulet">Előkészület<a class="headerlink" href="#elokeszulet" title="Permanent link">&para;</a></h2>
-<p>A feladatok megoldása során ne felejtsd el követni a feladatbeadás folyamatát <a href="../../tudnivalok/github/GitHub/">Github</a>.</p>
+<p>A feladatok megoldása során ne felejtsd el követni a feladatbeadás folyamatát, amiről <a href="../../tudnivalok/github/GitHub/">itt olvashatsz részletesen</a>.</p>
 <h3 id="git-repository-letrehozasa-es-letoltese">Git repository létrehozása és letöltése<a class="headerlink" href="#git-repository-letrehozasa-es-letoltese" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Moodle-ben keresd meg a laborhoz tartozó meghívó URL-jét és annak segítségével hozd létre a saját repository-dat.</li>
@@ -972,7 +972,7 @@
 <h3 id="projektek-elinditasa">Projektek elindítása<a class="headerlink" href="#projektek-elinditasa" title="Permanent link">&para;</a></h3>
 <p>A solution 3 projektből áll:</p>
 <ul>
-<li><strong>AI</strong>: Az LLM modell beburkolására szolgáló WebAPI, ami a <a href="http://localhost:5555/">http://localhost:5555/</a> címen érhető el. Az API leírását a <a href="http://localhost:5555/swagger/index.html">/swagger/index.html</a> címen tudjuk kiolvasni.</li>
+<li><strong>AI</strong>: Az LLM modell beburkolására szolgáló WebAPI, ami a <a href="http://localhost:5555/">http://localhost:5555/</a> címen érhető el. Az API leírását a <a href="http://localhost:5555/swagger/index.html">/swagger/index.html</a> címen tudjuk kiolvasni. Ebben a projektben nem kell mósosításokat végezni a feladat megoldása során, minden elő van készítve. A célja, hogy ezen keresztül el tudjuk érni a lokálisan futtatott modellt.</li>
 <li><strong>Server</strong>: A FullStack alkalmazáshoz tartozó backend. A <a href="http://localhost:5130/">http://localhost:5130/</a> címen érhető el. Az API leírását a <a href="http://localhost:5130/swagger/index.html">/swagger/index.html</a> címen tudjuk kiolvasni.</li>
 <li><strong>Client</strong>: A FullStack alkalmazáshoz tartozó React frontend. A <a href="http://localhost:5173/">http://localhost:5173/</a> címen érhető el.</li>
 </ul>
@@ -992,7 +992,7 @@
 </li>
 </ul>
 <h2 id="az-elkeszitendo-alkalmazas">Az elkészítendő alkalmazás<a class="headerlink" href="#az-elkeszitendo-alkalmazas" title="Permanent link">&para;</a></h2>
-<p>A labor során egy olyan LLM-et használó fullstack alkalmazást kell önállóan elkészítened, mely a munkaerőtoborzással kapcsolatos egyes feladatokat könnyíti meg. Az alkalmazásban nincs szükség authentikációra, adatbázisra, vagy perzisztenciára. Az alkalmazás állapot mentes. Az elkészülő HR asszisztens alkalmazás célja, hogy támogassa a HR munkatársakat a beérkező jelentkezések feldolgozására. A markdown formátumban megküldött önéletrajzok alapján, a szoftvernek képesnek kell lennie a következő feladatok megoldására:</p>
+<p>A labor során egy olyan LLM-et használó fullstack alkalmazást kell önállóan elkészítened, mely a munkaerőtoborzással kapcsolatos egyes feladatokat könnyíti meg. Az alkalmazásban nincs szükség authentikációra, adatbázisra, vagy perzisztenciára. Az alkalmazás állapot mentes. Az elkészülő HR asszisztens alkalmazás célja, hogy támogassa a HR munkatársakat a beérkező jelentkezések feldolgozásában. A markdown formátumban megküldött önéletrajzok alapján, a szoftvernek képesnek kell lennie a következő feladatok megoldására:</p>
 <ul>
 <li>A jelentkező kulcs kompetenciáinak kigyűjtése</li>
 <li>Azoknak a pozícióknak a meghatározása, melyekre a jelentkező alkalmas lehet</li>
@@ -1012,7 +1012,19 @@
 <p>Készíts képernyőképet az elkészült önéletrajzról, majd <strong><code>f0.png</code></strong> néven másold a repository gyökerébe!</p>
 </div>
 <h2 id="1-feladat">1. feladat<a class="headerlink" href="#1-feladat" title="Permanent link">&para;</a></h2>
-<p>Első lépésben biztosítsd a szerver számára az AI modellel való kommunikáció alapjait. Vizsgáld meg az AI modell API leírását (<code>/api/Chat</code>), különös tekintettel a kérés törzsének elvárt felépítésére. Hozz létre egy service interface-t, az ezt megvalósító service osztályt, valamint a szükséges modelleket. A service valósítsa meg a megfelelő HTTP kérést, mely segítségével tetszőleges prompt küldhető az AI modell felé. A feladat végén a service-t regisztrálni is kell a DI (Dependency Injection) konténerbe.</p>
+<p>Első lépésben biztosítsd a szerver számára az AI modellel való kommunikáció alapjait az alábbiak szerint.</p>
+<ol>
+<li>Futtasd a kiinduló alkalmazást és vizsgáld meg az AI modell API leírását (<code>/api/Chat</code>) a fent megadott címen. Keresd meg a leírásban a kérés és a válasz törzsének  felépítését. A HTTP kérés kiszolgálása során, a szerver és az AI modellt burkoló WebAPI közötti kommunikáció ezeket a JSON formátumokat használja.</li>
+<li>Hozd létre a fentieknek megfelelően a kommunikációhoz szükséges modell osztály(oka)t, mely(ek) példányait sorosítva az előző lépésben vizsgált JSON objektumokat kapjuk.</li>
+<li>Hozz létre egy service interface-t, az ezt megvalósító service osztályt. A service valósítsa meg a megfelelő HTTP kérést, mely segítségével tetszőleges prompt küldhető az AI modell felé. Rendelkezzen tehát a service egy olyan függvénnyel, ami paraméterként egy (az API leírásnak megfelelő) promptot vár, és ezt elküldi az AI projektben definiált végpontra.</li>
+<li>
+<p>A feladat végén az elkészült service-t regisztrálni is kell a DI (Dependency Injection) konténerbe.</p>
+<details class="info">
+<summary>Tipp</summary>
+<p>A DI konténerbe service-t regisztrálni a <code>Main</code> függvényen belül, az <code>AddScoped</code> vagy <code>AddTransient</code> függvény meghívásával lehet.</p>
+</details>
+</li>
+</ol>
 <details class="info">
 <summary>Segítség</summary>
 <p>Az <code>/api/Chat/Stream</code> végponttal egyelőre nem kell foglalkoznod, az csak az opcionális feladathoz tartozik.</p>
@@ -1036,10 +1048,22 @@
 <li><code>/api/HR/questions</code>: A kérésben kapott CV alapján fogalmazzon meg lehetséges kérdéseket, amiket érdemes lehet feltenni az állásinterjú során.</li>
 <li><code>/api/HR/invitation</code>: Generáljon meghívólevelet a kérésben kapott CV "tulajdonosa" részére, ami alkalmas egy interjúra történő behívásra.</li>
 </ul>
+<p>A megoldás főbb lépései a következők:</p>
+<ol>
+<li>Az egyes végpontok által meghívott service osztályt Dependency Injection (DI) használatával kérd el az alkalmazástól, hogy a controller használni tudja.</li>
+<li>
+<p>Valósíts meg minden végponthoz egy-egy függvényt, amely a fenti leírásnak megfelelő funkciót biztosítja, a következők szerint:</p>
+<ul>
+<li>A függvény paraméterként kapja meg a CV-t valamilyen formában.</li>
+<li>A funkciónak megfelelően hozza létre a promptot.</li>
+<li>A service felhasználásával küldje el a promptot az AI modellnek.</li>
+</ul>
 <details class="info">
 <summary>Tipp</summary>
-<p>Az egyes végpontok által meghívott service osztály Dependency Injection (DI) használatával elkérhető az alkalmazástól.</p>
+<p>A prompt létrehozása során tartsd szem előtt a felesleges kódduplikáció elkerülését. A modell használata során az AI projekt felé küldött HTTP kérések azonos felépítésű, de különböző tartalmú promptokat fognak tartalmazni.</p>
 </details>
+</li>
+</ol>
 <h3 id="beadando_2">Beadandó<a class="headerlink" href="#beadando_2" title="Permanent link">&para;</a></h3>
 <div class="admonition example">
 <p class="admonition-title">2. feladat beadandó (15 pont)</p>
@@ -1057,10 +1081,11 @@
 </div>
 <h2 id="3-feladat">3. feladat<a class="headerlink" href="#3-feladat" title="Permanent link">&para;</a></h2>
 <p>Az alkalmazás megvalósításának utolsó lépéseként tedd működővé az egyes funkciókat az előző feladatban létrehozott API hívások segítségével. Ehhez egészítsd ki a kliens Service osztályát a megfelelő HTTP kérésekkel.</p>
-<details class="info">
-<summary>Tipp</summary>
-<p>A megoldás színvonalát emeli, ha figyelsz a felesleges kódismétlés elkerülésére.</p>
-</details>
+<ul>
+<li>Minden funkcióhoz/API végponthoz tartozzon egy függvény, amely paraméterként megkapja a CV-t, és megvalósítja a HTTP kérést.</li>
+<li>Figyelj a felesleges kódismétlés elkerülésére!</li>
+<li>A HTTP kérés megvalósítása során gondoskodj a megfelelő hibakezelésről is.</li>
+</ul>
 <h3 id="beadando_3">Beadandó<a class="headerlink" href="#beadando_3" title="Permanent link">&para;</a></h3>
 <div class="admonition example">
 <p class="admonition-title">3. feladat beadandó (10 pont)</p>
@@ -1117,8 +1142,8 @@
           </path>
         </svg>
       </span>
-      <span title="2024. október 10. 01:08:24">
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2024. október 10. 01:08:24"><span class="timeago" datetime="2024-10-10T01:08:24+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024. október 10. 01:08:24">2024-10-10</span>
+      <span title="2025. március 10. 18:34:15">
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 10. 18:34:15"><span class="timeago" datetime="2025-03-10T18:34:15+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 10. 18:34:15">2025-03-10</span>
       </span>
     </span>
 
