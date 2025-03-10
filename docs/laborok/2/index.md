@@ -14,7 +14,7 @@ A feladatok megoldásához az alábbi telepített szoftverekre van szükség (al
 
 ## Előkészület
 
-A feladatok megoldása során ne felejtsd el követni a feladatbeadás folyamatát [Github](../../tudnivalok/github/GitHub.md).
+A feladatok megoldása során ne felejtsd el követni a feladatbeadás folyamatát, amiről [itt olvashatsz részletesen](../../tudnivalok/github/GitHub.md).
 
 ### Git repository létrehozása és letöltése
 
@@ -41,7 +41,7 @@ Minden modell esetében a leírásban találunk egy összehasonlítást a modell
 
 A solution 3 projektből áll:
     
-- **AI**: Az LLM modell beburkolására szolgáló WebAPI, ami a [http://localhost:5555/](http://localhost:5555/) címen érhető el. Az API leírását a [/swagger/index.html](http://localhost:5555/swagger/index.html) címen tudjuk kiolvasni.
+- **AI**: Az LLM modell beburkolására szolgáló WebAPI, ami a [http://localhost:5555/](http://localhost:5555/) címen érhető el. Az API leírását a [/swagger/index.html](http://localhost:5555/swagger/index.html) címen tudjuk kiolvasni. Ebben a projektben nem kell mósosításokat végezni a feladat megoldása során, minden elő van készítve. A célja, hogy ezen keresztül el tudjuk érni a lokálisan futtatott modellt.
 - **Server**: A FullStack alkalmazáshoz tartozó backend. A [http://localhost:5130/](http://localhost:5130/) címen érhető el. Az API leírását a [/swagger/index.html](http://localhost:5130/swagger/index.html) címen tudjuk kiolvasni.
 - **Client**: A FullStack alkalmazáshoz tartozó React frontend. A [http://localhost:5173/](http://localhost:5173/) címen érhető el.
 
@@ -61,7 +61,7 @@ A futtatáshoz az `AI` és a `Server` projekteket kell elindítani:
 
 ## Az elkészítendő alkalmazás
 
-A labor során egy olyan LLM-et használó fullstack alkalmazást kell önállóan elkészítened, mely a munkaerőtoborzással kapcsolatos egyes feladatokat könnyíti meg. Az alkalmazásban nincs szükség authentikációra, adatbázisra, vagy perzisztenciára. Az alkalmazás állapot mentes. Az elkészülő HR asszisztens alkalmazás célja, hogy támogassa a HR munkatársakat a beérkező jelentkezések feldolgozására. A markdown formátumban megküldött önéletrajzok alapján, a szoftvernek képesnek kell lennie a következő feladatok megoldására:
+A labor során egy olyan LLM-et használó fullstack alkalmazást kell önállóan elkészítened, mely a munkaerőtoborzással kapcsolatos egyes feladatokat könnyíti meg. Az alkalmazásban nincs szükség authentikációra, adatbázisra, vagy perzisztenciára. Az alkalmazás állapot mentes. Az elkészülő HR asszisztens alkalmazás célja, hogy támogassa a HR munkatársakat a beérkező jelentkezések feldolgozásában. A markdown formátumban megküldött önéletrajzok alapján, a szoftvernek képesnek kell lennie a következő feladatok megoldására:
 
 - A jelentkező kulcs kompetenciáinak kigyűjtése
 - Azoknak a pozícióknak a meghatározása, melyekre a jelentkező alkalmas lehet
@@ -82,9 +82,17 @@ Az alkalmazás funkcióinak teszteléséhez elengedhetetlen egy markdown önéle
 !!! example "0. feladat beadandó (0 pont)"
     Készíts képernyőképet az elkészült önéletrajzról, majd **`f0.png`** néven másold a repository gyökerébe!
 
-## 1. feladat
+## 1. feladat #
 
-Első lépésben biztosítsd a szerver számára az AI modellel való kommunikáció alapjait. Vizsgáld meg az AI modell API leírását (`/api/Chat`), különös tekintettel a kérés törzsének elvárt felépítésére. Hozz létre egy service interface-t, az ezt megvalósító service osztályt, valamint a szükséges modelleket. A service valósítsa meg a megfelelő HTTP kérést, mely segítségével tetszőleges prompt küldhető az AI modell felé. A feladat végén a service-t regisztrálni is kell a DI (Dependency Injection) konténerbe.
+Első lépésben biztosítsd a szerver számára az AI modellel való kommunikáció alapjait az alábbiak szerint.
+
+1. Futtasd a kiinduló alkalmazást és vizsgáld meg az AI modell API leírását (`/api/Chat`) a fent megadott címen. Keresd meg a leírásban a kérés és a válasz törzsének  felépítését. A HTTP kérés kiszolgálása során, a szerver és az AI modellt burkoló WebAPI közötti kommunikáció ezeket a JSON formátumokat használja.
+2. Hozd létre a fentieknek megfelelően a kommunikációhoz szükséges modell osztály(oka)t, mely(ek) példányait sorosítva az előző lépésben vizsgált JSON objektumokat kapjuk.
+3. Hozz létre egy service interface-t, az ezt megvalósító service osztályt. A service valósítsa meg a megfelelő HTTP kérést, mely segítségével tetszőleges prompt küldhető az AI modell felé. Rendelkezzen tehát a service egy olyan függvénnyel, ami paraméterként egy (az API leírásnak megfelelő) promptot vár, és ezt elküldi az AI projektben definiált végpontra.
+4. A feladat végén az elkészült service-t regisztrálni is kell a DI (Dependency Injection) konténerbe.
+
+    ??? info "Tipp"
+        A DI konténerbe service-t regisztrálni a `Main` függvényen belül, az `AddScoped` függvény meghívásával lehet.
 
 ??? info "Segítség"
     Az `/api/Chat/Stream` végponttal egyelőre nem kell foglalkoznod, az csak az opcionális feladathoz tartozik.
@@ -109,8 +117,18 @@ Az alábbi felsorolás tartalmazza, hogy a szerver mely API végpontjai milyen f
 - `/api/HR/questions`: A kérésben kapott CV alapján fogalmazzon meg lehetséges kérdéseket, amiket érdemes lehet feltenni az állásinterjú során.
 - `/api/HR/invitation`: Generáljon meghívólevelet a kérésben kapott CV "tulajdonosa" részére, ami alkalmas egy interjúra történő behívásra.
 
-??? info "Tipp"
-    Az egyes végpontok által meghívott service osztály Dependency Injection (DI) használatával elkérhető az alkalmazástól.
+A megoldás főbb lépései a következők:
+
+1. Az egyes végpontok által meghívott service osztályt Dependency Injection (DI) használatával kérd el az alkalmazástól, hogy a controller használni tudja.
+2. Valósíts meg minden végponthoz egy-egy függvényt, amely a fenti leírásnak megfelelő funkciót biztosítja, a következők szerint:
+    - A függvény paraméterként kapja meg a CV-t valamilyen formában.
+    - A funkciónak megfelelően hozza létre a promptot.
+    - A service felhasználásával küldje el a promptot az AI modellnek.
+
+    ??? info "Tipp"
+        A prom létrehozása során tartsd szem előtt a felesleges kódduplikáció elkerülését. A modell használta során az AI projekt felé küldött HTTP kérések azonos felépítésű, de különböző tartalmú promptokat fognak tartalmazni.
+
+    
 
 ### Beadandó
 
@@ -131,8 +149,9 @@ Az alábbi felsorolás tartalmazza, hogy a szerver mely API végpontjai milyen f
 
 Az alkalmazás megvalósításának utolsó lépéseként tedd működővé az egyes funkciókat az előző feladatban létrehozott API hívások segítségével. Ehhez egészítsd ki a kliens Service osztályát a megfelelő HTTP kérésekkel.
 
-??? info "Tipp"
-    A megoldás színvonalát emeli, ha figyelsz a felesleges kódismétlés elkerülésére.
+- Minden funkcióhoz/API végponthoz tartozzon egy függvény, amely paraméterként megkapja a CV-t, és megvalósítja a HTTP kérést.
+- Figyelj a felesleges kódismétlés elkerülésére!
+- A HTTP kérés megvalósítása során gondoskodj a megfelelő hibakezelésről is.
 
 ### Beadandó
 
