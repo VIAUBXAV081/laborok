@@ -99,7 +99,7 @@ Első lépésben biztosítsd a szerver számára az AI modellel való kommuniká
 
 ### Beadandó
 
-!!! example "1. feladat beadandó (10 pont)"
+!!! example "1. feladat beadandó (11 pont)"
     Kommitold a változtatásokat, különös tekintettel az alábbiakra:
 
     * Service interface és az azt implementáló service osztály megvalósítása
@@ -132,7 +132,7 @@ A megoldás főbb lépései a következők:
 
 ### Beadandó
 
-!!! example "2. feladat beadandó (15 pont)"
+!!! example "2. feladat beadandó (14 pont)"
     Kommitold a változtatásokat, különös tekintettel az alábbiakra:
     
     * A Controller osztály kódja
