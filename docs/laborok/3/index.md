@@ -211,7 +211,7 @@ A futó konténer metrikáit jelenítsük meg egy grafikus dashboardon. A metrik
       2. Ezt a `poetry add prometheus-fastapi-instrumentator` paranccsal tudjuk telepíteni, majd pedig a `Instrumentator().instrument(app).expose(app)` sor hozzáadásával tudjuk aktiválni az `app` létrehozása után.
       3. A csomag a metrikákat a `/metrics` endpoint-on fogja publikálni.
       4. Egészítsük ki a metrikákat egy tetszőleges, a modellhez köthető saját metrikával (pl.: a modell hányszor prediktálta az egyes osztályokat). Ehhez a [dokumentációban](https://github.com/trallnag/prometheus-fastapi-instrumentator?tab=readme-ov-file#creating-new-metrics) találunk részletes leírást.
-      5. Teszteljük az API `/metrics` végpont kimenetét.
+      5. Teszteljük az API `/metrics` végpont kimenetét. (Megjegyzés: A módosítások érvénybe lépéséhez, elképzelhető, hogy újra létre kell hozni a szolgáltatást: `docker-compose up -d --build api`)
 
 ??? success "Segítség új metrika létrehozásához (megoldással)"
     ```python
@@ -258,11 +258,11 @@ A Prometheus fogja gyűjteni az adott metrikákat. A szolgáltatás képes akár
     global:
         scrape_interval: 5s
 
-        scrape_configs:
-        - job_name: 'api'
-          metrics_path: /metrics
-          static_configs:
-            - targets: ['api:8000']
+    scrape_configs:
+    - job_name: 'api'
+        metrics_path: /metrics
+        static_configs:
+        - targets: ['api:8000']
     ```
     Példa query: 
     ```
