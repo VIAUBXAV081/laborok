@@ -1267,7 +1267,7 @@
 <li>Ezt a <code>poetry add prometheus-fastapi-instrumentator</code> paranccsal tudjuk telepíteni, majd pedig a <code>Instrumentator().instrument(app).expose(app)</code> sor hozzáadásával tudjuk aktiválni az <code>app</code> létrehozása után.</li>
 <li>A csomag a metrikákat a <code>/metrics</code> endpoint-on fogja publikálni.</li>
 <li>Egészítsük ki a metrikákat egy tetszőleges, a modellhez köthető saját metrikával (pl.: a modell hányszor prediktálta az egyes osztályokat). Ehhez a <a href="https://github.com/trallnag/prometheus-fastapi-instrumentator?tab=readme-ov-file#creating-new-metrics">dokumentációban</a> találunk részletes leírást.</li>
-<li>Teszteljük az API <code>/metrics</code> végpont kimenetét.</li>
+<li>Teszteljük az API <code>/metrics</code> végpont kimenetét. (Megjegyzés: A módosítások érvénybe lépéséhez, elképzelhető, hogy újra létre kell hozni a szolgáltatást: <code>docker-compose up -d --build api</code>)</li>
 </ol>
 </li>
 </ol>
@@ -1317,11 +1317,11 @@
 <div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
 
-<span class="w">    </span><span class="nt">scrape_configs</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;api&#39;</span>
-<span class="w">      </span><span class="nt">metrics_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/metrics</span>
-<span class="w">      </span><span class="nt">static_configs</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;api:8000&#39;</span><span class="p p-Indicator">]</span>
+<span class="nt">scrape_configs</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;api&#39;</span>
+<span class="w">    </span><span class="nt">metrics_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/metrics</span>
+<span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;api:8000&#39;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 Példa query: 
 <div class="highlight"><pre><span></span><code>predicted_class_name_total{class_name=&quot;Iris-setosa&quot;}
@@ -1437,8 +1437,8 @@ Példa query:
           </path>
         </svg>
       </span>
-      <span title="2025. március 24. 15:31:00">
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 24. 15:31:00"><span class="timeago" datetime="2025-03-24T15:31:00+01:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 24. 15:31:00">2025-03-24</span>
+      <span title="2025. március 31. 12:05:50">
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. március 31. 12:05:50"><span class="timeago" datetime="2025-03-31T12:05:50+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. március 31. 12:05:50">2025-03-31</span>
       </span>
     </span>
 
