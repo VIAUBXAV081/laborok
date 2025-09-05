@@ -271,6 +271,9 @@ Hozz létre egy service interface-t és az ezt megvalósító service osztályt.
             }
             ```
 
+            !!! warning "App settings"
+                Az `appsettings.json` fájlt az `appsettings.example.json` fájl alapján tudod létrehozni. Figyelj rá, hogy ezt a fájlt semmiképpen se commitold, mivel a saját API kulcsod is kikerülhet vele a kezed közül.
+
         2. A beállítások értékeit a `configuration["Services:Mistral:Url"]` és `configuration["Services:Mistral:APIKey"]` sorokkal tudod kiolvasni. Null érték esetén az értékük legyen üres string.
 
         3. Az `_options` egy olyan `JsonSerializerOptions` objektum legyen, ahol a `PropertyNamingPolicy` az `SnakeCaseLower`. Ez biztosítja, hogy a modell *PascalCase* formátumú property-eit a JSON-ben *snake_case* formátumúra alakítsa.
