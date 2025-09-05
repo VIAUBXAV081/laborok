@@ -64,7 +64,8 @@ markdown_extensions:
   - pymdownx.tilde
   - md_in_html
   - pymdownx.keys
-
+  - attr_list
+  
 plugins:
   - search:
       prebuild_index: true
