@@ -1,35 +1,25 @@
-# Adatvizualizáció labor
+# Gépi látás labor
 
-## Bevezetés
+Itt található a gépi látás labor leírása.
 
-A labor során a Pythonban elérhető legfontosabb adatvizualizációs könyvtárakkal ismerkedhetünk meg.
+**Az alapfeladat**
 
+A feladat Kaggle-ről egy tetszőleges dataset választása és egy notebook kidolgozása az előadás anyag végén bemutatotthoz hasonlóan. Ez a minta notebook megtalálható a tárgy github repo-jában a ComputerVision mappában.
 
-## Előkészület
+**Az extra feladat**
 
-A feladatok megoldása során ne felejtsd el követni a feladatbeadás folyamatát [Github](../../tudnivalok/github/GitHub.md).
+Az extra feladat (ami a megajánlott jegyhez járulhat hozzá) választható: Pytorch-ban a QAT (quantization aware training) kipróbálása, vagy a Tensorflow alapú megoldás szintén notebook-os elkészítése, vagy a készített meogldás integrálása egy mobilos környezetbe és erről videó készítése. A második esethez minta a ComputerVision/link_for_zip_examples.txt-ben megjelölt zip fájl "ami" mappájában van tf.py néven.
 
-### Git repository létrehozása és letöltése
+**Beadási információ**
 
-1. Moodle-ben keresd meg a laborhoz tartozó meghívó URL-jét és annak segítségével hozd létre a saját repository-dat.
-2. Várd meg, míg elkészül a repository, majd checkout-old ki.
-3. Hozz létre egy új ágat `megoldas` néven, és ezen az ágon dolgozz.
-4. A neptun.txt fájlba írd bele a Neptun kódodat. A fájlban semmi más ne szerepeljen, csak egyetlen sorban a Neptun kód 6 karaktere.
+Lényeges, hogy az egyes vizualizációk és print-elt szövegek is a beadás részét képezik (confusion matrix, tanulási görbe, precision, recall, stb.). Így a beadott notebook-ból ezek ne legyenek törölve. (Tehát alapból egy notebook a beadandó.) Ennek a neve legyen olyan, hogy tartalmazza a nevet, neptun kódot. Formátum: Pelda_Peter_ABC123.ipynb
 
-## Feladat: Feltáró adatelemzés és adatvizualizáció
+**Beadási információ az extra feladathoz.**
 
-1. Válassz egy publikusan elérhető adathalmazt (pl. Kaggle-ről), amin a vizualizációkat fogod elkészíteni.
-2. Végezz feltáró adatelemzést (EDA) a következők szerint.
-    - Készíts 4-4-4 vizualizációt a **matplotlib**, **seaborn** és **plotly** könyvtárakkal
-    - Minden vizualizáció legyen egyedi
-    - Minden könyvtárnál legyen legalább 2 olyan típusú vizualizáció, amely más könyvtáraknál nem szerepel
-    - Minden vizualizáció legyen igényes, tartalmazzon címet, tengelyfeliratokat, stb., illetve hordozzon tényleges információt.
-    - Minden vizualizáció után írd le egy Markdown cellába, hogy milyen következtetést lehet levonni az adott grafikonból.
+Az extra feladat 1. verziójának választása esetén lehet folytatólagosan dolgozni az alap notebook-ba. (Tehát ekkor csak egy notebook kerül beadásra.)
 
+A 2. verzió készíthető egy új notebook-ba. (Tehát ekkor összesen két notebook kerül beadásra.)
 
-!!! example "Beadandó (40 pont)"
-    * Töltsd fel a repoba a vizualizációkat tartalmazó Jupyter Notebook fájlt. A cellakimenetek, tehát a vizualizációk is szerepeljenek benne!
+Az extra feladat 3. verziójának választása esetén pedig elhelyezendő egy link az alap notebook-ban, ami a videóra mutat. (Tehát ekkor egy notebook kerül beadásra a végén egy linkkel.)
 
-
-!!! example "Opcionális feladat beadandó (10 pont)"
-    * Készíts legalább 3 térképet a Folium python könyvtárral, tetszőleges adathalmazon. Az ábrák legyenek igényesek, tartalmazzanak minél több információt.
+_Bármilyen kérdést tegyetek fel bátran a Teams csoportban, hogy tanulhassunk egymás kérdéseiből!_
