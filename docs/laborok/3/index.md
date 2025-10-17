@@ -1,3 +1,5 @@
+# Előző féléves verzió!!! A labor kiadását az aktuális félévre hirdetni fogjuk.
+
 # Android labor
 
 ## Bevezetés
