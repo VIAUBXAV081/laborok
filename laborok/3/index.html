@@ -596,17 +596,10 @@ Szükség esetén jelentkezz be a Google Accountoddal, valamint engedélyezd a p
 <p>A feladat megoldható akár egy prompttal/kérdéssel, és a válasz tartalmainak bemásolásával, további javítások nélkül.</p>
 </div>
 <div class="admonition example">
-<p class="admonition-title">2a. feladat beadandó (1 pont)</p>
+<p class="admonition-title">2. feladat beadandó (1 pont)</p>
 <ul>
 <li>Kommitold a változtatásokat.</li>
-<li>Készíts egy képernyőképet a futó alkalmazásról <em>játék közben</em> (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe <strong><code>f2a.png</code></strong> néven.</li>
-</ul>
-</div>
-<div class="admonition example">
-<p class="admonition-title">2b. feladat beadandó (1 pont)</p>
-<ul>
-<li>Kommitold a változtatásokat.</li>
-<li>Készíts egy képernyőképet a futó alkalmazásról <em>miután valamelyik játékos nyert</em> (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe <strong><code>f2b.png</code></strong> néven.</li>
+<li>Készíts egy képernyőképet a futó alkalmazásról <em>miután valamelyik játékos nyert</em> (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe <strong><code>f2.png</code></strong> néven.</li>
 </ul>
 </div>
 <h2 id="3-feladat-generativ-modellt-hasznalo-alkalmazas">3. feladat: Generatív modellt használó alkalmazás<a class="headerlink" href="#3-feladat-generativ-modellt-hasznalo-alkalmazas" title="Permanent link">¶</a></h2>
@@ -633,26 +626,711 @@ Futás idejű hibák esetén használd a <em>Logcat</em> nézetet!</p>
 <p>Ha az alkalmazás használata során az API-tól a "Model overloaded" hibaüzenet kapod vissza, próbálkozz egy későbbi időpontban. Ha ez sem segít, készítsd el így a képernyőképeket.</p>
 </div>
 <div class="admonition example">
-<p class="admonition-title">3a. feladat beadandó (1 pont)</p>
+<p class="admonition-title">3. feladat beadandó (1 pont)</p>
 <ul>
 <li>Kommitold a változtatásokat.</li>
-<li>Készíts egy képernyőképet a futó alkalmazásról <em>az első kép alapján generált szöveggel</em> (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe <strong><code>f3a.png</code></strong> néven.</li>
+<li>Készíts egy képernyőképet a futó alkalmazásról <em>a második kép alapján generált szöveggel</em> (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe <strong><code>f3.png</code></strong> néven.</li>
 </ul>
 </div>
-<div class="admonition example">
-<p class="admonition-title">3b. feladat beadandó (1 pont)</p>
-<ul>
-<li>Kommitold a változtatásokat.</li>
-<li>Készíts egy képernyőképet a futó alkalmazásról <em>saját promptot kipróbálva</em> (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe <strong><code>f3b.png</code></strong> néven.</li>
+<h2 id="mlkit-objektum-detektalas-android-alkalmazasban">MLKit Objektum Detektálás Android Alkalmazásban<a class="headerlink" href="#mlkit-objektum-detektalas-android-alkalmazasban" title="Permanent link">¶</a></h2>
+<p>Ebben a laborgyakorlatban egy Android alkalmazást fogunk készíteni, amely valós időben képes objektumokat felismerni a kamera képén. A Google ML Kit beépített objektum detektálási képességeit fogjuk használni, amely előre betanított modellekkel rendelkezik a leggyakoribb objektumok felismeréséhez.</p>
+<h2 id="2-projekt-letrehozasa">2. Projekt létrehozása<a class="headerlink" href="#2-projekt-letrehozasa" title="Permanent link">¶</a></h2>
+<h3 id="21-uj-projekt-inditasa">2.1 Új projekt indítása<a class="headerlink" href="#21-uj-projekt-inditasa" title="Permanent link">¶</a></h3>
+<ol>
+<li>Nyisd meg az Android Studio-t</li>
+<li>Válaszd a "New Project" opciót</li>
+<li>Válaszd az "Empty Activity" sablont</li>
+<li>Konfiguráld a projektet:  <ul>
+<li><strong>Name</strong>: ObjectDetectionLab  </li>
+<li><strong>Package name</strong>: hu.bme.aut.android.objectdetectionlab  </li>
+<li><strong>Save location</strong>: ObjectDetectionLab könyvtár a repositoryban  </li>
+<li><strong>Language</strong>: Kotlin  </li>
+<li><strong>Minimum SDK</strong>: API 21 (Android 5.0)  </li>
+<li><strong>Build configuration language</strong>: Kotlin DSL  </li>
 </ul>
-</div>
-<h2 id="opcionalis-feladat-megajanlott-jegyert">Opcionális feladat (megajánlott jegyért):<a class="headerlink" href="#opcionalis-feladat-megajanlott-jegyert" title="Permanent link">¶</a></h2>
-<p>Készíts egy új alkalmazást, amely vagy LiteRT alapú modellt, vagy egy tetszőleges MLKit szolgáltatást használ bármilyen MI alapú funkció megvalósítására!<br>
-A megvalósítás során használhatod segítségként a Geminit, vagy más nagy nyelvi modellt.  </p>
+</li>
+</ol>
 <div class="admonition danger">
 <p class="admonition-title">FILE PATH</p>
-<p>A projekt mindenképpen a repository-ban lévő OptionalProject könyvtárba kerüljön, és beadásnál legyen is felpusholva! A kód nélkül nem tudunk maximális pontot adni a laborra!</p>
+<p>A projekt mindenképpen a repository-ban lévő ObjectDetectionLab könyvtárba kerüljön, és beadásnál legyen is felpusholva! A kód nélkül nem tudunk maximális pontot adni a laborra!</p>
 </div>
+<h3 id="22-projekt-struktura">2.2 Projekt struktúra<a class="headerlink" href="#22-projekt-struktura" title="Permanent link">¶</a></h3>
+<p>A létrehozott projekt főbb részei:</p>
+<div class="highlight"><pre><span></span><code>ObjectDetectionLab/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── hu/bme/aut/android/objectdetectionlab/
+│   │   │   │   └── MainActivity.kt
+│   │   │   ├── res/
+│   │   │   │   ├── layout/
+│   │   │   │   ├── values/
+│   │   │   │   └── ...
+│   │   │   └── AndroidManifest.xml
+│   └── build.gradle.kts
+├── build.gradle.kts
+└── settings.gradle.kts
+</code></pre></div>
+<h2 id="3-fuggosegek-hozzaadasa">3. Függőségek hozzáadása<a class="headerlink" href="#3-fuggosegek-hozzaadasa" title="Permanent link">¶</a></h2>
+<h3 id="31-project-szintu-buildgradlekts">3.1 Project szintű build.gradle.kts<a class="headerlink" href="#31-project-szintu-buildgradlekts" title="Permanent link">¶</a></h3>
+<p>Nyisd meg a gyökérkönyvtárban található <code>build.gradle.kts</code> fájlt és ellenőrizd, hogy tartalmazza:</p>
+<div class="highlight"><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"com.android.application"</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">"8.1.0"</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">"org.jetbrains.kotlin.android"</span><span class="p">)</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s">"1.9.0"</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Projekt pluginek</p>
+<p>Az Android alkalmazás és Kotlin nyelv támogatásához szükséges alapvető pluginek. Ezek határozzák meg, hogy Android projektet készítünk Kotlin nyelven.</p>
+</div>
+<h3 id="32-app-szintu-buildgradlekts">3.2 App szintű build.gradle.kts<a class="headerlink" href="#32-app-szintu-buildgradlekts" title="Permanent link">¶</a></h3>
+<p>Nyisd meg az <code>app/build.gradle.kts</code> fájlt és add hozzá az alábbi függőségeket a  <em>dependencies</em> részhez:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">// CameraX</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">cameraxVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1.3.0"</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"androidx.camera:camera-core:</span><span class="si">$</span><span class="n">cameraxVersion</span><span class="s">"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"androidx.camera:camera-camera2:</span><span class="si">$</span><span class="n">cameraxVersion</span><span class="s">"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"androidx.camera:camera-lifecycle:</span><span class="si">$</span><span class="n">cameraxVersion</span><span class="s">"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"androidx.camera:camera-view:</span><span class="si">$</span><span class="n">cameraxVersion</span><span class="s">"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// ML Kit Object Detection</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"com.google.mlkit:object-detection:17.0.0"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Permissions handling</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"com.google.accompanist:accompanist-permissions:0.32.0"</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Függőségek magyarázata</p>
+<ul>
+<li>CameraX: Google kamera könyvtár egyszerűsített API-val</li>
+<li>ML Kit: Google gépi tanulási könyvtár objektum felismeréshez</li>
+<li>Accompanist: Segédkönyvtár az engedélyek egyszerű kezeléséhez</li>
+</ul>
+</div>
+<h3 id="33-szinkronizalas">3.3 Szinkronizálás<a class="headerlink" href="#33-szinkronizalas" title="Permanent link">¶</a></h3>
+<p>Kattints a "Sync Now" linkre a felugró sávban, vagy használd a File → Sync Project with Gradle Files menüpontot.</p>
+<h2 id="4-engedelyek-beallitasa">4. Engedélyek beállítása<a class="headerlink" href="#4-engedelyek-beallitasa" title="Permanent link">¶</a></h2>
+<h3 id="41-androidmanifestxml-modositasa">4.1 AndroidManifest.xml módosítása<a class="headerlink" href="#41-androidmanifestxml-modositasa" title="Permanent link">¶</a></h3>
+<p>Nyisd meg az <code>app/src/main/AndroidManifest.xml</code> fájlt és add hozzá a kamera engedélyt:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;manifest</span><span class="w"> </span><span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+<span class="w">    </span><span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span><span class="nt">&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- Kamera engedély --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;uses-permission</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.permission.CAMERA"</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">    </span><span class="cm">&lt;!-- Kamera hardver követelmény --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;uses-feature</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.hardware.camera"</span><span class="w"> </span><span class="na">android:required=</span><span class="s">"true"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;uses-feature</span><span class="w"> </span><span class="na">android:name=</span><span class="s">"android.hardware.camera.autofocus"</span><span class="w"> </span><span class="nt">/&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;application</span>
+<span class="w">        </span><span class="err">...</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Manifest beállítások</p>
+<ul>
+<li>CAMERA permission: Engedély a kamera használatához</li>
+<li>camera feature: Jelzi, hogy az app kamerát használ (required=true: csak kamerás eszközökön fut)</li>
+<li>autofocus: Az autofókusz funkció használata (nem kötelező, de ajánlott)</li>
+</ul>
+</div>
+<h2 id="5-kamera-kezelo-osztaly-letrehozasa">5. Kamera kezelő osztály létrehozása<a class="headerlink" href="#5-kamera-kezelo-osztaly-letrehozasa" title="Permanent link">¶</a></h2>
+<h3 id="51-cameramanagerkt">5.1 CameraManager.kt<a class="headerlink" href="#51-cameramanagerkt" title="Permanent link">¶</a></h3>
+<p>Hozz létre egy új Kotlin fájlt <code>CameraManager.kt</code> néven a projekt fő package-ében:</p>
+<div class="highlight"><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">hu.bme.aut.android.objectdetectionlab</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nn">android.content.Context</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.camera.core.*</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.camera.lifecycle.ProcessCameraProvider</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.camera.view.PreviewView</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.Composable</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.remember</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.platform.LocalContext</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.platform.LocalLifecycleOwner</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.viewinterop.AndroidView</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.core.content.ContextCompat</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.lifecycle.LifecycleOwner</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.google.mlkit.vision.common.InputImage</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.google.mlkit.vision.objects.ObjectDetection</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.google.mlkit.vision.objects.ObjectDetector</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.google.mlkit.vision.objects.defaults.ObjectDetectorOptions</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ExecutorService</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">java.util.concurrent.Executors</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">CameraManager</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">context</span><span class="p">:</span><span class="w"> </span><span class="n">Context</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">lifecycleOwner</span><span class="p">:</span><span class="w"> </span><span class="n">LifecycleOwner</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">onObjectsDetected</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">DetectedObject</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">cameraExecutor</span><span class="p">:</span><span class="w"> </span><span class="n">ExecutorService</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">objectDetector</span><span class="p">:</span><span class="w"> </span><span class="n">ObjectDetector</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">camera</span><span class="p">:</span><span class="w"> </span><span class="n">Camera? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">preview</span><span class="p">:</span><span class="w"> </span><span class="n">Preview? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">imageAnalyzer</span><span class="p">:</span><span class="w"> </span><span class="n">ImageAnalysis? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">cameraProvider</span><span class="p">:</span><span class="w"> </span><span class="n">ProcessCameraProvider? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+
+<span class="w">    </span><span class="k">init</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">setupObjectDetector</span><span class="p">()</span>
+<span class="w">        </span><span class="n">cameraExecutor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Executors</span><span class="p">.</span><span class="na">newSingleThreadExecutor</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">setupObjectDetector</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ML Kit objektum detektor beállítása</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ObjectDetectorOptions</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">setDetectorMode</span><span class="p">(</span><span class="n">ObjectDetectorOptions</span><span class="p">.</span><span class="na">STREAM_MODE</span><span class="p">)</span><span class="w"> </span><span class="c1">// Valós idejű mód</span>
+<span class="w">            </span><span class="p">.</span><span class="na">enableClassification</span><span class="p">()</span><span class="w"> </span><span class="c1">// Osztályozás engedélyezése</span>
+<span class="w">            </span><span class="p">.</span><span class="na">enableMultipleObjects</span><span class="p">()</span><span class="w"> </span><span class="c1">// Több objektum detektálása</span>
+<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+
+<span class="w">        </span><span class="n">objectDetector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ObjectDetection</span><span class="p">.</span><span class="na">getClient</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">startCamera</span><span class="p">(</span><span class="n">previewView</span><span class="p">:</span><span class="w"> </span><span class="n">PreviewView</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">cameraProviderFuture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessCameraProvider</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">cameraProviderFuture</span><span class="p">.</span><span class="na">addListener</span><span class="p">({</span>
+<span class="w">            </span><span class="n">cameraProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cameraProviderFuture</span><span class="p">.</span><span class="na">get</span><span class="p">()</span>
+
+<span class="w">            </span><span class="c1">// Preview beállítása</span>
+<span class="w">            </span><span class="n">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Preview</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">also</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nb">it</span><span class="p">.</span><span class="na">setSurfaceProvider</span><span class="p">(</span><span class="n">previewView</span><span class="p">.</span><span class="na">surfaceProvider</span><span class="p">)</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Képelemző beállítása</span>
+<span class="w">            </span><span class="n">imageAnalyzer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImageAnalysis</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setBackpressureStrategy</span><span class="p">(</span><span class="n">ImageAnalysis</span><span class="p">.</span><span class="na">STRATEGY_KEEP_ONLY_LATEST</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">also</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nb">it</span><span class="p">.</span><span class="na">setAnalyzer</span><span class="p">(</span><span class="n">cameraExecutor</span><span class="p">,</span><span class="w"> </span><span class="n">ObjectDetectionAnalyzer</span><span class="p">())</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Kamera választása (hátsó kamera)</span>
+<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">cameraSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CameraSelector</span><span class="p">.</span><span class="na">DEFAULT_BACK_CAMERA</span>
+
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// Előző kötések megszüntetése</span>
+<span class="w">                </span><span class="n">cameraProvider</span><span class="o">?.</span><span class="na">unbindAll</span><span class="p">()</span>
+
+<span class="w">                </span><span class="c1">// Kamera kötése az életciklushoz</span>
+<span class="w">                </span><span class="n">camera</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cameraProvider</span><span class="o">?.</span><span class="na">bindToLifecycle</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">lifecycleOwner</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">cameraSelector</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">preview</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">imageAnalyzer</span>
+<span class="w">                </span><span class="p">)</span>
+
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">exc</span><span class="p">:</span><span class="w"> </span><span class="n">Exception</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">exc</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">()</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="n">ContextCompat</span><span class="p">.</span><span class="na">getMainExecutor</span><span class="p">(</span><span class="n">context</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">inner</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">ObjectDetectionAnalyzer</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ImageAnalysis</span><span class="p">.</span><span class="na">Analyzer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nd">@androidx.camera.core.ExperimentalGetImage</span>
+<span class="w">        </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">analyze</span><span class="p">(</span><span class="n">imageProxy</span><span class="p">:</span><span class="w"> </span><span class="n">ImageProxy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">mediaImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imageProxy</span><span class="p">.</span><span class="na">image</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mediaImage</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">val</span><span class="w"> </span><span class="nv">image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InputImage</span><span class="p">.</span><span class="na">fromMediaImage</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">mediaImage</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">imageProxy</span><span class="p">.</span><span class="na">imageInfo</span><span class="p">.</span><span class="na">rotationDegrees</span>
+<span class="w">                </span><span class="p">)</span>
+
+<span class="w">                </span><span class="c1">// Objektum detektálás végrehajtása</span>
+<span class="w">                </span><span class="n">objectDetector</span><span class="p">.</span><span class="na">process</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">.</span><span class="na">addOnSuccessListener</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">objects</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">                        </span><span class="c1">// Detektált objektumok feldolgozása</span>
+<span class="w">                        </span><span class="kd">val</span><span class="w"> </span><span class="nv">detectedObjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">objects</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">                            </span><span class="n">DetectedObject</span><span class="p">(</span>
+<span class="w">                                </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getObjectLabel</span><span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="na">labels</span><span class="p">.</span><span class="na">firstOrNull</span><span class="p">()</span><span class="o">?.</span><span class="na">text</span><span class="p">),</span>
+<span class="w">                                </span><span class="n">confidence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="na">labels</span><span class="p">.</span><span class="na">firstOrNull</span><span class="p">()</span><span class="o">?.</span><span class="na">confidence</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="m">0f</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">boundingBox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="na">boundingBox</span>
+<span class="w">                            </span><span class="p">)</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                        </span><span class="n">onObjectsDetected</span><span class="p">(</span><span class="n">detectedObjects</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">.</span><span class="na">addOnFailureListener</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">                        </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">.</span><span class="na">addOnCompleteListener</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">imageProxy</span><span class="p">.</span><span class="na">close</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">imageProxy</span><span class="p">.</span><span class="na">close</span><span class="p">()</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getObjectLabel</span><span class="p">(</span><span class="n">label</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s">"Fashion good"</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">"Ruházat"</span>
+<span class="w">            </span><span class="s">"Food"</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">"Étel"</span>
+<span class="w">            </span><span class="s">"Home good"</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">"Háztartási tárgy"</span>
+<span class="w">            </span><span class="s">"Place"</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">"Hely"</span>
+<span class="w">            </span><span class="s">"Plant"</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">"Növény"</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="s">"Ismeretlen"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">shutdown</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cameraExecutor</span><span class="p">.</span><span class="na">shutdown</span><span class="p">()</span>
+<span class="w">        </span><span class="n">objectDetector</span><span class="p">.</span><span class="na">close</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Detektált objektum adatszerkezet</span>
+<span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">DetectedObject</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">label</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">confidence</span><span class="p">:</span><span class="w"> </span><span class="kt">Float</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">boundingBox</span><span class="p">:</span><span class="w"> </span><span class="n">android</span><span class="p">.</span><span class="na">graphics</span><span class="p">.</span><span class="na">Rect</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">CameraManager konstruktor</p>
+<ul>
+<li>context: Android rendszer szolgáltatások eléréséhez</li>
+<li>lifecycleOwner: Automatikus kamera életciklus kezelés (start/stop)</li>
+<li>onObjectsDetected: Callback amikor objektumot talál</li>
+<li>A változók a kamera komponenseket tárolják (preview, analyzer, stb.)</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Objektum detektor konfigurálása</p>
+<ul>
+<li>STREAM_MODE: Valós idejű videó feldolgozás (vs. SINGLE_IMAGE_MODE)</li>
+<li>enableClassification: Nem csak detektál, hanem kategorizál is</li>
+<li>enableMultipleObjects: Egyszerre több objektumot is felismer</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Kamera inicializálás folyamata</p>
+<ol>
+<li>CameraProvider: Aszinkron módon szerzi be a kamera szolgáltatást</li>
+<li>Preview: Létrehoz egy előnézetet és összeköti a UI elemmel</li>
+<li>ImageAnalyzer: Beállítja a képfeldolgozást (csak a legfrissebb képet tartja meg)</li>
+<li>bindToLifecycle: Összeköti a kamerát az Activity/Fragment életciklusával</li>
+</ol>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Képfeldolgozó logika</p>
+<ol>
+<li>ImageProxy: Kamera képkocka wrapper, fontos a close() hívása</li>
+<li>InputImage: ML Kit formátumra konvertálás a rotációval együtt</li>
+<li>process: Aszinkron objektum detektálás</li>
+<li>Callbacks: Sikeres/sikertelen feldolgozás kezelése</li>
+<li>imageProxy.close(): Felszabadítja a memóriát</li>
+</ol>
+</div>
+<div class="admonition info">
+<p class="admonition-title">ML Kit beépített kategóriák</p>
+<p>Az ML Kit 5 fő kategóriába sorolja az objektumokat angol nyelven. Ez a függvény magyarra fordítja őket a jobb felhasználói élmény érdekében.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Detektált objektum reprezentációja</p>
+<ul>
+<li>label: Az objektum kategóriája (pl. "Étel")</li>
+<li>confidence: Megbízhatósági érték 0-1 között (0.8 = 80% biztos)</li>
+<li>boundingBox: Az objektum pozíciója és mérete a képen (x, y, szélesség, magasság)</li>
+</ul>
+</div>
+<h2 id="6-compose-ui-komponensek-letrehozasa">6. Compose UI komponensek létrehozása<a class="headerlink" href="#6-compose-ui-komponensek-letrehozasa" title="Permanent link">¶</a></h2>
+<h3 id="61-camerapreview-composable">6.1 CameraPreview Composable<a class="headerlink" href="#61-camerapreview-composable" title="Permanent link">¶</a></h3>
+<p>Hozz létre egy új fájlt <code>CameraScreen.kt</code> néven:</p>
+<div class="highlight"><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">hu.bme.aut.android.objectdetectionlab</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nn">android.Manifest</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">android.graphics.Rect</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.camera.view.PreviewView</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.Canvas</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.background</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.*</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.lazy.LazyColumn</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.lazy.items</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.shape.RoundedCornerShape</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.*</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.runtime.*</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Alignment</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Modifier</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.draw.clip</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.geometry.Offset</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.geometry.Size</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.graphics.Color</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.graphics.drawscope.Stroke</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.platform.LocalContext</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.platform.LocalLifecycleOwner</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.text.font.FontWeight</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.unit.dp</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.unit.sp</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.viewinterop.AndroidView</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.google.accompanist.permissions.ExperimentalPermissionsApi</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.google.accompanist.permissions.isGranted</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.google.accompanist.permissions.rememberPermissionState</span>
+
+<span class="nd">@OptIn</span><span class="p">(</span><span class="n">ExperimentalPermissionsApi</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="nd">@Composable</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">CameraScreen</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Kamera engedély kezelése</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">cameraPermissionState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rememberPermissionState</span><span class="p">(</span><span class="n">Manifest</span><span class="p">.</span><span class="na">permission</span><span class="p">.</span><span class="na">CAMERA</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// Detektált objektumok állapota</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">detectedObjects</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mutableStateOf</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">DetectedObject</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">emptyList</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Kontextus és életciklus</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalContext</span><span class="p">.</span><span class="na">current</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">lifecycleOwner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalLifecycleOwner</span><span class="p">.</span><span class="na">current</span>
+
+<span class="w">    </span><span class="c1">// Kamera manager</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">cameraManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">remember</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">CameraManager</span><span class="p">(</span>
+<span class="w">            </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">,</span>
+<span class="w">            </span><span class="n">lifecycleOwner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lifecycleOwner</span><span class="p">,</span>
+<span class="w">            </span><span class="n">onObjectsDetected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">objects</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">                </span><span class="n">detectedObjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">objects</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Cleanup</span>
+<span class="w">    </span><span class="n">DisposableEffect</span><span class="p">(</span><span class="kt">Unit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">onDispose</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">cameraManager</span><span class="p">.</span><span class="na">shutdown</span><span class="p">()</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">Box</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">when</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">cameraPermissionState</span><span class="p">.</span><span class="na">status</span><span class="p">.</span><span class="na">isGranted</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// Kamera előnézet</span>
+<span class="w">                </span><span class="n">CameraPreview</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">cameraManager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cameraManager</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">()</span>
+<span class="w">                </span><span class="p">)</span>
+
+<span class="w">                </span><span class="c1">// Objektum dobozok rajzolása</span>
+<span class="w">                </span><span class="n">ObjectBoundingBoxes</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">objects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">detectedObjects</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">()</span>
+<span class="w">                </span><span class="p">)</span>
+
+<span class="w">                </span><span class="c1">// Detektált objektumok listája</span>
+<span class="w">                </span><span class="n">DetectionResults</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">objects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">detectedObjects</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">align</span><span class="p">(</span><span class="n">Alignment</span><span class="p">.</span><span class="na">BottomCenter</span><span class="p">)</span>
+<span class="w">                </span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// Engedély kérése</span>
+<span class="w">                </span><span class="n">PermissionRequest</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">onRequestPermission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cameraPermissionState</span><span class="p">.</span><span class="na">launchPermissionRequest</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">                </span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Composable</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">CameraPreview</span><span class="p">(</span>
+<span class="w">    </span><span class="n">cameraManager</span><span class="p">:</span><span class="w"> </span><span class="n">CameraManager</span><span class="p">,</span>
+<span class="w">    </span><span class="n">modifier</span><span class="p">:</span><span class="w"> </span><span class="n">Modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">AndroidView</span><span class="p">(</span>
+<span class="w">        </span><span class="n">factory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">            </span><span class="n">PreviewView</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="na">also</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">previewView</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">                </span><span class="n">cameraManager</span><span class="p">.</span><span class="na">startCamera</span><span class="p">(</span><span class="n">previewView</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">modifier</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nd">@Composable</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">ObjectBoundingBoxes</span><span class="p">(</span>
+<span class="w">    </span><span class="n">objects</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">DetectedObject</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">modifier</span><span class="p">:</span><span class="w"> </span><span class="n">Modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Canvas</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">modifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">objects</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">            </span><span class="c1">// Doboz rajzolása</span>
+<span class="w">            </span><span class="n">drawRect</span><span class="p">(</span>
+<span class="w">                </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">Green</span><span class="p">,</span>
+<span class="w">                </span><span class="n">topLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Offset</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">obj</span><span class="p">.</span><span class="na">boundingBox</span><span class="p">.</span><span class="na">left</span><span class="p">.</span><span class="na">toFloat</span><span class="p">(),</span>
+<span class="w">                    </span><span class="n">obj</span><span class="p">.</span><span class="na">boundingBox</span><span class="p">.</span><span class="na">top</span><span class="p">.</span><span class="na">toFloat</span><span class="p">()</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">                </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Size</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">obj</span><span class="p">.</span><span class="na">boundingBox</span><span class="p">.</span><span class="na">width</span><span class="p">().</span><span class="na">toFloat</span><span class="p">(),</span>
+<span class="w">                    </span><span class="n">obj</span><span class="p">.</span><span class="na">boundingBox</span><span class="p">.</span><span class="na">height</span><span class="p">().</span><span class="na">toFloat</span><span class="p">()</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">                </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stroke</span><span class="p">(</span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3.</span><span class="n">dp</span><span class="p">.</span><span class="na">toPx</span><span class="p">())</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Composable</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">DetectionResults</span><span class="p">(</span>
+<span class="w">    </span><span class="n">objects</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">DetectedObject</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">modifier</span><span class="p">:</span><span class="w"> </span><span class="n">Modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Card</span><span class="p">(</span>
+<span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">modifier</span>
+<span class="w">            </span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span>
+<span class="w">        </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RoundedCornerShape</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">),</span>
+<span class="w">        </span><span class="n">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CardDefaults</span><span class="p">.</span><span class="na">cardColors</span><span class="p">(</span>
+<span class="w">            </span><span class="n">containerColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">Black</span><span class="p">.</span><span class="na">copy</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7f</span><span class="p">)</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Column</span><span class="p">(</span>
+<span class="w">            </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">)</span>
+<span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Detektált objektumok"</span><span class="p">,</span>
+<span class="w">                </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">White</span><span class="p">,</span>
+<span class="w">                </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">18.</span><span class="n">sp</span><span class="p">,</span>
+<span class="w">                </span><span class="n">fontWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FontWeight</span><span class="p">.</span><span class="na">Bold</span><span class="p">,</span>
+<span class="w">                </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="n">bottom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8.</span><span class="n">dp</span><span class="p">)</span>
+<span class="w">            </span><span class="p">)</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">objects</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Nincs detektált objektum"</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">Gray</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14.</span><span class="n">sp</span>
+<span class="w">                </span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">objects</span><span class="p">.</span><span class="na">take</span><span class="p">(</span><span class="m">5</span><span class="p">).</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">                    </span><span class="n">ObjectItem</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Composable</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">ObjectItem</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span><span class="w"> </span><span class="n">DetectedObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Row</span><span class="p">(</span>
+<span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span>
+<span class="w">            </span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="n">vertical</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4.</span><span class="n">dp</span><span class="p">),</span>
+<span class="w">        </span><span class="n">horizontalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">SpaceBetween</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="na">label</span><span class="p">,</span>
+<span class="w">            </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">White</span><span class="p">,</span>
+<span class="w">            </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14.</span><span class="n">sp</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"</span><span class="si">${</span><span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="na">confidence</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">).</span><span class="na">toInt</span><span class="p">()</span><span class="si">}</span><span class="s">%"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">Green</span><span class="p">,</span>
+<span class="w">            </span><span class="n">fontSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14.</span><span class="n">sp</span><span class="p">,</span>
+<span class="w">            </span><span class="n">fontWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FontWeight</span><span class="p">.</span><span class="na">Bold</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Composable</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">PermissionRequest</span><span class="p">(</span>
+<span class="w">    </span><span class="n">onRequestPermission</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span>
+<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Column</span><span class="p">(</span>
+<span class="w">        </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span>
+<span class="w">            </span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="na">background</span><span class="p">(</span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">colorScheme</span><span class="p">.</span><span class="na">background</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="m">24.</span><span class="n">dp</span><span class="p">),</span>
+<span class="w">        </span><span class="n">horizontalAlignment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Alignment</span><span class="p">.</span><span class="na">CenterHorizontally</span><span class="p">,</span>
+<span class="w">        </span><span class="n">verticalArrangement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrangement</span><span class="p">.</span><span class="na">Center</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Icon</span><span class="p">(</span>
+<span class="w">            </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">size</span><span class="p">(</span><span class="m">100.</span><span class="n">dp</span><span class="p">),</span>
+<span class="w">            </span><span class="n">tint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">colorScheme</span><span class="p">.</span><span class="na">primary</span><span class="p">,</span>
+<span class="w">            </span><span class="n">contentDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Camera"</span>
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">Spacer</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">height</span><span class="p">(</span><span class="m">24.</span><span class="n">dp</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Kamera engedély szükséges"</span><span class="p">,</span>
+<span class="w">            </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">headlineMedium</span><span class="p">,</span>
+<span class="w">            </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">colorScheme</span><span class="p">.</span><span class="na">onBackground</span>
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">Spacer</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">height</span><span class="p">(</span><span class="m">16.</span><span class="n">dp</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">Text</span><span class="p">(</span>
+<span class="w">            </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Az objektum detektáláshoz szükségünk van a kamera használatára."</span><span class="p">,</span>
+<span class="w">            </span><span class="n">style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">typography</span><span class="p">.</span><span class="na">bodyMedium</span><span class="p">,</span>
+<span class="w">            </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">colorScheme</span><span class="p">.</span><span class="na">onBackground</span><span class="p">.</span><span class="na">copy</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7f</span><span class="p">),</span>
+<span class="w">            </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="n">horizontal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">32.</span><span class="n">dp</span><span class="p">)</span>
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">Spacer</span><span class="p">(</span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">height</span><span class="p">(</span><span class="m">32.</span><span class="n">dp</span><span class="p">))</span>
+
+<span class="w">        </span><span class="n">Button</span><span class="p">(</span>
+<span class="w">            </span><span class="n">onClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">onRequestPermission</span><span class="p">,</span>
+<span class="w">            </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span>
+<span class="w">                </span><span class="p">.</span><span class="na">fillMaxWidth</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">padding</span><span class="p">(</span><span class="n">horizontal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">48.</span><span class="n">dp</span><span class="p">)</span>
+<span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="s">"Engedély megadása"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Fő képernyő komponens</p>
+<ul>
+<li>rememberPermissionState: Engedély állapot követése</li>
+<li>remember + mutableStateOf: Compose state management a detektált objektumokhoz</li>
+<li>LocalContext/LocalLifecycleOwner: Hozzáférés az Android kontextushoz</li>
+<li>DisposableEffect: Cleanup amikor a komponens eltűnik</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Kamera előnézet Compose-ban</p>
+<p>AndroidView: Híd a hagyományos Android View rendszer és Compose között. A PreviewView egy speciális CameraX View, amit itt integrálunk a Compose UI-ba.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Objektum keretek rajzolása</p>
+<p>Canvas: Compose rajzfelület, ahol zöld kereteket rajzolunk a detektált objektumok köré. A Stroke() csak körvonalat rajzol, nem töltött téglalapot.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Eredmények kártya</p>
+<ul>
+<li>Card: Material Design komponens félig átlátszó fekete háttérrel</li>
+<li>take(5): Maximum 5 objektumot jelenítünk meg a teljesítmény érdekében</li>
+<li>Column: Vertikális elrendezés a tartalom számára</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Egyedi objektum megjelenítése</p>
+<p>Row: Horizontális elrendezés a címke és százalék megjelenítésére. A SpaceBetween a két elemet a sor két végére helyezi.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Permission UI</p>
+<p>Középre igazított layout kamera ikonnal és gombbal. A MaterialTheme használata biztosítja a konzisztens megjelenést light/dark mode-ban.</p>
+</div>
+<h3 id="62-material-icons-hozzaadasa">6.2 Material Icons hozzáadása<a class="headerlink" href="#62-material-icons-hozzaadasa" title="Permanent link">¶</a></h3>
+<p>A kamera ikon használatához add hozzá a Material Icons függőséget a <code>build.gradle.kts</code> fájlhoz:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ... egyéb függőségek ...</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"androidx.compose.material:material-icons-extended:1.5.4"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Majd módosítsd az import részt a <code>CameraScreen.kt</code> fájlban:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material.icons.Icons</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material.icons.filled.CameraAlt</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.*</span>
+</code></pre></div>
+<p>És használd az ikont:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Icon</span><span class="p">(</span>
+<span class="w">    </span><span class="n">imageVector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Icons</span><span class="p">.</span><span class="na">Filled</span><span class="p">.</span><span class="na">CameraAlt</span><span class="p">,</span>
+<span class="w">    </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">size</span><span class="p">(</span><span class="m">100.</span><span class="n">dp</span><span class="p">),</span>
+<span class="w">    </span><span class="n">tint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">colorScheme</span><span class="p">.</span><span class="na">primary</span><span class="p">,</span>
+<span class="w">    </span><span class="n">contentDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Camera"</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="7-mainactivity-modositasa">7. MainActivity módosítása<a class="headerlink" href="#7-mainactivity-modositasa" title="Permanent link">¶</a></h2>
+<h3 id="71-mainactivitykt">7.1 MainActivity.kt<a class="headerlink" href="#71-mainactivitykt" title="Permanent link">¶</a></h3>
+<p>Módosítsd a <code>MainActivity.kt</code> fájlt:</p>
+<div class="highlight"><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">hu.bme.aut.android.objectdetectionlab</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nn">android.os.Bundle</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.activity.ComponentActivity</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.activity.compose.setContent</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.foundation.layout.fillMaxSize</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.MaterialTheme</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.material3.Surface</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">androidx.compose.ui.Modifier</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">com.university.objectdetectionlab.ui.theme.ObjectDetectionLabTheme</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MainActivity</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ComponentActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="w"> </span><span class="n">Bundle?)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="na">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+<span class="w">        </span><span class="n">setContent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ObjectDetectionLabTheme</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Surface</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">modifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Modifier</span><span class="p">.</span><span class="na">fillMaxSize</span><span class="p">(),</span>
+<span class="w">                    </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaterialTheme</span><span class="p">.</span><span class="na">colorScheme</span><span class="p">.</span><span class="na">background</span>
+<span class="w">                </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">CameraScreen</span><span class="p">()</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Alkalmazás belépési pont</p>
+<ul>
+<li>setContent: Compose UI beállítása Activity-ben</li>
+<li>Theme: Alkalmazás téma wrapper</li>
+<li>Surface: Material Design alap konténer</li>
+<li>CameraScreen: A fő képernyő komponens</li>
+</ul>
+</div>
+<h2 id="8-alkalmazas-tesztelese">8. Alkalmazás tesztelése<a class="headerlink" href="#8-alkalmazas-tesztelese" title="Permanent link">¶</a></h2>
+<h3 id="81-futtatas-fizikai-eszkozon">8.1 Futtatás fizikai eszközön<a class="headerlink" href="#81-futtatas-fizikai-eszkozon" title="Permanent link">¶</a></h3>
+<ol>
+<li>Engedélyezd a fejlesztői módot az Android eszközön:</li>
+<li>Beállítások → A telefonról → Többször koppints a Build számra</li>
+<li>Engedélyezd az USB hibakeresést:</li>
+<li>Beállítások → Fejlesztői beállítások → USB hibakeresés</li>
+<li>Csatlakoztasd az eszközt USB kábellel</li>
+<li>Válaszd ki az eszközt az Android Studio-ban</li>
+<li>Kattints a Run gombra (zöld háromszög)</li>
+</ol>
+<h3 id="82-futtatas-emulatorban">8.2 Futtatás emulátorban<a class="headerlink" href="#82-futtatas-emulatorban" title="Permanent link">¶</a></h3>
+<ol>
+<li>Indítsd el az emulátort</li>
+<li>Válaszd ki az emulátort az Android Studio-ban</li>
+<li>Kattints a Run gombra</li>
+</ol>
+<p><strong>Megjegyzés</strong>: Az emulátor virtuális kamerát használ, ami korlátozottabb, mint a fizikai eszköz kamerája.</p>
+<h3 id="83-az-alkalmazas-hasznalata">8.3 Az alkalmazás használata<a class="headerlink" href="#83-az-alkalmazas-hasznalata" title="Permanent link">¶</a></h3>
+<ol>
+<li>Első indításkor megjelenik az engedélykérő képernyő</li>
+<li>Kattints az "Engedély megadása" gombra</li>
+<li>A rendszer kéri a kamera engedélyt - fogadd el</li>
+<li>Irányítsd a kamerát különböző objektumokra</li>
+<li>Az alkalmazás valós időben detektálja és címkézi az objektumokat</li>
+<li>A képernyő alján megjelennek a detektált objektumok és azok megbízhatósági értékei</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">4. feladat beadandó (2 pont)</p>
+<ul>
+<li>Kommitold a változtatásokat.</li>
+<li>Készíts egy képernyőképet a futó alkalmazásról <em>egy detektált objektummal</em> (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe <strong><code>f4.png</code></strong> néven.</li>
+</ul>
+</div>
+<h2 id="9-gyakori-problemak-es-megoldasok">9. Gyakori problémák és megoldások<a class="headerlink" href="#9-gyakori-problemak-es-megoldasok" title="Permanent link">¶</a></h2>
+<h3 id="91-build-hibak">9.1 Build hibák<a class="headerlink" href="#91-build-hibak" title="Permanent link">¶</a></h3>
+<p><strong>Probléma</strong>: "Unresolved reference" hibák<br>
+<strong>Megoldás</strong>: Ellenőrizd, hogy minden függőség helyesen van-e hozzáadva és szinkronizáld a projektet</p>
+<p><strong>Probléma</strong>: Version conflict<br>
+<strong>Megoldás</strong>: Frissítsd a függőségeket a legújabb kompatibilis verziókra</p>
+<h3 id="92-futasideju-hibak">9.2 Futásidejű hibák<a class="headerlink" href="#92-futasideju-hibak" title="Permanent link">¶</a></h3>
+<p><strong>Probléma</strong>: Az alkalmazás összeomlik indításkor<br>
+<strong>Megoldás</strong>: Ellenőrizd az engedélyeket az AndroidManifest.xml fájlban</p>
+<p><strong>Probléma</strong>: Nem jelennek meg az objektumok<br>
+<strong>Megoldás</strong>: 
+- Ellenőrizd, hogy megfelelő fényviszonyok vannak-e
+- Próbálj nagyobb, tisztábban látható objektumokat detektálni</p>
+<h2 id="opcionalis-feladat-megajanlott-jegyert">Opcionális feladat (megajánlott jegyért):<a class="headerlink" href="#opcionalis-feladat-megajanlott-jegyert" title="Permanent link">¶</a></h2>
+<p>Módosítsd az alkalmazást, hogy egy saját, LiteRT alapú modellt használjon!</p>
+<h3 id="101-egyeni-modellek-hasznalata-pelda">10.1 Egyéni modellek használata - Példa<a class="headerlink" href="#101-egyeni-modellek-hasznalata-pelda" title="Permanent link">¶</a></h3>
+<p>Az ML Kit támogatja egyéni TensorFlow Lite modellek használatát:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">localModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalModel</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">setAssetFilePath</span><span class="p">(</span><span class="s">"model.tflite"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">customObjectDetectorOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CustomObjectDetectorOptions</span><span class="p">.</span><span class="na">Builder</span><span class="p">(</span><span class="n">localModel</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">setDetectorMode</span><span class="p">(</span><span class="n">CustomObjectDetectorOptions</span><span class="p">.</span><span class="na">STREAM_MODE</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">enableClassification</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">setMaxPerObjectLabelCount</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()</span>
+</code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">Opcionális feladat beadandó (10 pont)</p>
 <ul>
@@ -668,8 +1346,8 @@ A megvalósítás során használhatod segítségként a Geminit, vagy más nagy
           </path>
         </svg>
       </span>
-      <span title="2025. október 17. 08:52:33">
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. október 17. 08:52:33 CEST"><span class="timeago" datetime="2025-10-17T08:52:33+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. október 17. 08:52:33 CEST">2025-10-17</span>
+      <span title="2025. október 22. 12:18:57">
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2025. október 22. 12:18:57 CEST"><span class="timeago" datetime="2025-10-22T12:18:57+02:00" locale="hu"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025. október 22. 12:18:57 CEST">2025-10-22</span>
       </span>
     </span>
 
