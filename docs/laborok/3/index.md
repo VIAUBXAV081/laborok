@@ -1,5 +1,3 @@
-# Előző féléves verzió!!! A labor kiadását az aktuális félévre hirdetni fogjuk.
-
 # Android labor
 
 ## Bevezetés
@@ -58,63 +56,32 @@ Az előbb létrehozott projektben valósíts meg egy amőba játékot a Gemini s
 !!! info "Nem kell túlbonyolítani"
     A feladat megoldható akár egy prompttal/kérdéssel, és a válasz tartalmainak bemásolásával, további javítások nélkül.
 
-!!! example "2. feladat beadandó (1 pont)"
+!!! example "2. feladat beadandó (2 pont)"
     * Kommitold a változtatásokat.
     * Készíts egy képernyőképet a futó alkalmazásról *miután valamelyik játékos nyert* (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe **`f2.png`** néven.
 
-## 3. feladat: Generatív modellt használó alkalmazás
-
-### Projekt létrehozása
-
-Mentsük el a korábbi projektet, majd
-
-1. Hozzunk létre egy új projektet, válasszuk a *Gemini API Starter* lehetőséget.
-1. A projekt neve legyen `GeminiApiDemo`, a kezdő package pedig `hu.bme.aut.android.geminiapidemo`.
-1. Nyelvnek válasszuk a *Kotlin*-t.
-1. A minimum API szint legyen API24: Android 7.0.
-1. A *Build configuration language* Kotlin DSL legyen.
-1. A következő ablakban a linkre kattintva generáljunk magunknak API kulcsot, majd másoljuk be.
-
-!!!danger "FILE PATH"
-	A projekt mindenképpen a repository-ban lévő GeminiApiDemo könyvtárba kerüljön, és beadásnál legyen is felpusholva! A kód nélkül nem tudunk maximális pontot adni a laborra!
-
-Vizsgáljuk meg a létrejött projekt kódját, majd próbáljuk meg futtatni a létrejött projektet!
-
-A projekt nagy valószínűséggel nem fog elindulni, mert több helyen elavult hivatkozásokat tartalmaz.  
-
-A fejlesztőkörnyezet által kiírt Error üzenetek alapján próbáld meg kijavítani a projekt működését!  
-Futás idejű hibák esetén használd a *Logcat* nézetet!
-
-!!! tip "Model overload"
-    Ha az alkalmazás használata során az API-tól a "Model overloaded" hibaüzenet kapod vissza, próbálkozz egy későbbi időpontban. Ha ez sem segít, készítsd el így a képernyőképeket.
-
-!!! example "3. feladat beadandó (1 pont)"
-    * Kommitold a változtatásokat.
-    * Készíts egy képernyőképet a futó alkalmazásról *a második kép alapján generált szöveggel* (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe **`f3.png`** néven.
-
-## MLKit Objektum Detektálás Android Alkalmazásban
+## 3. Feladat: MLKit Objektum Detektálás Android Alkalmazásban
 
 Ebben a laborgyakorlatban egy Android alkalmazást fogunk készíteni, amely valós időben képes objektumokat felismerni a kamera képén. A Google ML Kit beépített objektum detektálási képességeit fogjuk használni, amely előre betanított modellekkel rendelkezik a leggyakoribb objektumok felismeréséhez.
 
-## 2. Projekt létrehozása
+### Projekt létrehozása
 
-### 2.1 Új projekt indítása
+#### Új projekt indítása
 
 1. Nyisd meg az Android Studio-t
 2. Válaszd a "New Project" opciót
 3. Válaszd az "Empty Activity" sablont
 4. Konfiguráld a projektet:  
-    - **Name**: ObjectDetectionLab  
-    - **Package name**: hu.bme.aut.android.objectdetectionlab  
-    - **Save location**: ObjectDetectionLab könyvtár a repositoryban  
-    - **Language**: Kotlin  
-    - **Minimum SDK**: API 21 (Android 5.0)  
+    - **Name**: `ObjectDetectionLab` 
+    - **Package name**: `hu.bme.aut.android.objectdetectionlab`  
+    - **Save location**: `ObjectDetectionLab` könyvtár a repositoryban  
+    - **Minimum SDK**: API 24 (Android 7.0)  
     - **Build configuration language**: Kotlin DSL  
 
 !!!danger "FILE PATH"
 	A projekt mindenképpen a repository-ban lévő ObjectDetectionLab könyvtárba kerüljön, és beadásnál legyen is felpusholva! A kód nélkül nem tudunk maximális pontot adni a laborra!
 
-### 2.2 Projekt struktúra
+### Projekt struktúra
 
 A létrehozott projekt főbb részei:
 
@@ -135,52 +102,39 @@ ObjectDetectionLab/
 └── settings.gradle.kts
 ```
 
-## 3. Függőségek hozzáadása
-
-### 3.1 Project szintű build.gradle.kts
-
-Nyisd meg a gyökérkönyvtárban található `build.gradle.kts` fájlt és ellenőrizd, hogy tartalmazza:
-
-```kotlin
-plugins {
-    id("com.android.application") version "8.1.0" apply false
-    id("org.jetbrains.kotlin.android") version "1.9.0" apply false
-}
-```
-!!! info "Projekt pluginek"
-    Az Android alkalmazás és Kotlin nyelv támogatásához szükséges alapvető pluginek. Ezek határozzák meg, hogy Android projektet készítünk Kotlin nyelven.
-### 3.2 App szintű build.gradle.kts
+## Függőségek hozzáadása
 
 Nyisd meg az `app/build.gradle.kts` fájlt és add hozzá az alábbi függőségeket a  *dependencies* részhez:
 
 ```kotlin
-
     // CameraX
-    val cameraxVersion = "1.3.0"
+    val cameraxVersion = "1.5.1"
     implementation("androidx.camera:camera-core:$cameraxVersion")
     implementation("androidx.camera:camera-camera2:$cameraxVersion")
     implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
     implementation("androidx.camera:camera-view:$cameraxVersion")
     
     // ML Kit Object Detection
-    implementation("com.google.mlkit:object-detection:17.0.0")
+    implementation("com.google.mlkit:object-detection:17.0.2")
     
     // Permissions handling
-    implementation("com.google.accompanist:accompanist-permissions:0.32.0")
+    implementation("com.google.accompanist:accompanist-permissions:0.37.3")
+
+    // Material Icons
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
 ```
 !!! info "Függőségek magyarázata"
     - CameraX: Google kamera könyvtár egyszerűsített API-val
     - ML Kit: Google gépi tanulási könyvtár objektum felismeréshez
-    - Accompanist: Segédkönyvtár az engedélyek egyszerű kezeléséhez
+    - Accompanist: Segédkönyvtár az engedélyek egyszerű kezeléséhez  
+    - Material Icons: Modern ikonkészlet
 
-
-### 3.3 Szinkronizálás
 
 Kattints a "Sync Now" linkre a felugró sávban, vagy használd a File → Sync Project with Gradle Files menüpontot.
 
-## 4. Engedélyek beállítása
+## Engedélyek beállítása
 
-### 4.1 AndroidManifest.xml módosítása
+### AndroidManifest.xml módosítása
 
 Nyisd meg az `app/src/main/AndroidManifest.xml` fájlt és add hozzá a kamera engedélyt:
 
@@ -204,9 +158,9 @@ Nyisd meg az `app/src/main/AndroidManifest.xml` fájlt és add hozzá a kamera e
     - CAMERA permission: Engedély a kamera használatához
     - camera feature: Jelzi, hogy az app kamerát használ (required=true: csak kamerás eszközökön fut)
     - autofocus: Az autofókusz funkció használata (nem kötelező, de ajánlott)
-## 5. Kamera kezelő osztály létrehozása
+## Kamera kezelő osztály létrehozása
 
-### 5.1 CameraManager.kt
+### CameraManager.kt
 
 Hozz létre egy új Kotlin fájlt `CameraManager.kt` néven a projekt fő package-ében:
 
@@ -242,6 +196,10 @@ class CameraManager(
     private var preview: Preview? = null
     private var imageAnalyzer: ImageAnalysis? = null
     private var cameraProvider: ProcessCameraProvider? = null
+
+    // Kamera kép méretei
+    private var imageWidth: Int = 0
+    private var imageHeight: Int = 0
 
     init {
         setupObjectDetector()
@@ -307,6 +265,10 @@ class CameraManager(
         override fun analyze(imageProxy: ImageProxy) {
             val mediaImage = imageProxy.image
             if (mediaImage != null) {
+                // Kép méretének mentése
+                imageWidth = mediaImage.width
+                imageHeight = mediaImage.height
+
                 val image = InputImage.fromMediaImage(
                     mediaImage,
                     imageProxy.imageInfo.rotationDegrees
@@ -320,7 +282,10 @@ class CameraManager(
                             DetectedObject(
                                 label = getObjectLabel(obj.labels.firstOrNull()?.text),
                                 confidence = obj.labels.firstOrNull()?.confidence ?: 0f,
-                                boundingBox = obj.boundingBox
+                                boundingBox = obj.boundingBox,
+                                imageWidth = imageWidth,
+                                imageHeight = imageHeight,
+                                rotation = imageProxy.imageInfo.rotationDegrees
                             )
                         }
                         onObjectsDetected(detectedObjects)
@@ -358,8 +323,36 @@ class CameraManager(
 data class DetectedObject(
     val label: String,
     val confidence: Float,
-    val boundingBox: android.graphics.Rect
-)
+    val boundingBox: android.graphics.Rect,
+    val imageWidth: Int,
+    val imageHeight: Int,
+    val rotation: Int
+) {
+    fun getScaledBoundingBox(screenWidth: Float, screenHeight: Float): android.graphics.RectF {
+        // Rotáció figyelembevétele
+        val sourceWidth = if (rotation == 90 || rotation == 270) imageHeight else imageWidth
+        val sourceHeight = if (rotation == 90 || rotation == 270) imageWidth else imageHeight
+
+        // Skálázási faktor számítása (PreviewView FILL_CENTER móddal)
+        val widthRatio = screenWidth / sourceWidth
+        val heightRatio = screenHeight / sourceHeight
+        val scaleFactor = maxOf(widthRatio, heightRatio)
+
+        // Eltolás számítása (center)
+        val scaledWidth = sourceWidth * scaleFactor
+        val scaledHeight = sourceHeight * scaleFactor
+        val offsetX = (screenWidth - scaledWidth) / 2f
+        val offsetY = (screenHeight - scaledHeight) / 2f
+
+        // Koordináták átszámítása
+        return android.graphics.RectF(
+            boundingBox.left * scaleFactor + offsetX,
+            boundingBox.top * scaleFactor + offsetY,
+            boundingBox.right * scaleFactor + offsetX,
+            boundingBox.bottom * scaleFactor + offsetY
+        )
+    }
+}
 ```
 !!! info "CameraManager konstruktor"
     - context: Android rendszer szolgáltatások eléréséhez
@@ -393,9 +386,9 @@ data class DetectedObject(
     - confidence: Megbízhatósági érték 0-1 között (0.8 = 80% biztos)
     - boundingBox: Az objektum pozíciója és mérete a képen (x, y, szélesség, magasság)
 
-## 6. Compose UI komponensek létrehozása
+## Compose UI komponensek létrehozása
 
-### 6.1 CameraPreview Composable
+### CameraPreview Composable
 
 Hozz létre egy új fájlt `CameraScreen.kt` néven:
 
@@ -403,6 +396,7 @@ Hozz létre egy új fájlt `CameraScreen.kt` néven:
 package hu.bme.aut.android.objectdetectionlab
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.graphics.Rect
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.Canvas
@@ -411,6 +405,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -435,14 +431,14 @@ import com.google.accompanist.permissions.rememberPermissionState
 fun CameraScreen() {
     // Kamera engedély kezelése
     val cameraPermissionState = rememberPermissionState(Manifest.permission.CAMERA)
-    
+
     // Detektált objektumok állapota
     var detectedObjects by remember { mutableStateOf<List<DetectedObject>>(emptyList()) }
-    
+
     // Kontextus és életciklus
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
-    
+
     // Kamera manager
     val cameraManager = remember {
         CameraManager(
@@ -453,14 +449,14 @@ fun CameraScreen() {
             }
         )
     }
-    
+
     // Cleanup
     DisposableEffect(Unit) {
         onDispose {
             cameraManager.shutdown()
         }
     }
-    
+
     Box(modifier = Modifier.fillMaxSize()) {
         when {
             cameraPermissionState.status.isGranted -> {
@@ -469,13 +465,13 @@ fun CameraScreen() {
                     cameraManager = cameraManager,
                     modifier = Modifier.fillMaxSize()
                 )
-                
+
                 // Objektum dobozok rajzolása
                 ObjectBoundingBoxes(
                     objects = detectedObjects,
                     modifier = Modifier.fillMaxSize()
                 )
-                
+
                 // Detektált objektumok listája
                 DetectionResults(
                     objects = detectedObjects,
@@ -507,26 +503,39 @@ fun CameraPreview(
     )
 }
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun ObjectBoundingBoxes(
     objects: List<DetectedObject>,
     modifier: Modifier = Modifier
 ) {
-    Canvas(modifier = modifier) {
-        objects.forEach { obj ->
-            // Doboz rajzolása
-            drawRect(
-                color = Color.Green,
-                topLeft = Offset(
-                    obj.boundingBox.left.toFloat(),
-                    obj.boundingBox.top.toFloat()
-                ),
-                size = Size(
-                    obj.boundingBox.width().toFloat(),
-                    obj.boundingBox.height().toFloat()
-                ),
-                style = Stroke(width = 3.dp.toPx())
-            )
+    // BoxWithConstraints használatával megkapjuk a Canvas tényleges méretét
+    BoxWithConstraints(modifier = modifier) {
+        val screenWidth = constraints.maxWidth.toFloat()
+        val screenHeight = constraints.maxHeight.toFloat()
+
+        Canvas(modifier = Modifier.fillMaxSize()) {
+            objects.forEach { obj ->
+                // Koordináta transzformáció
+                val scaledBox = obj.getScaledBoundingBox(
+                    screenWidth = screenWidth,
+                    screenHeight = screenHeight
+                )
+
+                // Doboz rajzolása
+                drawRect(
+                    color = Color.Green,
+                    topLeft = Offset(
+                        scaledBox.left,
+                        scaledBox.top
+                    ),
+                    size = Size(
+                        scaledBox.width(),
+                        scaledBox.height()
+                    ),
+                    style = Stroke(width = 3.dp.toPx())
+                )
+            }
         }
     }
 }
@@ -555,7 +564,7 @@ fun DetectionResults(
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
-            
+
             if (objects.isEmpty()) {
                 Text(
                     text = "Nincs detektált objektum",
@@ -606,30 +615,31 @@ fun PermissionRequest(
         verticalArrangement = Arrangement.Center
     ) {
         Icon(
+            imageVector = Icons.Filled.CameraAlt,
             modifier = Modifier.size(100.dp),
             tint = MaterialTheme.colorScheme.primary,
             contentDescription = "Camera"
         )
-        
+
         Spacer(modifier = Modifier.height(24.dp))
-        
+
         Text(
             text = "Kamera engedély szükséges",
             style = MaterialTheme.typography.headlineMedium,
             color = MaterialTheme.colorScheme.onBackground
         )
-        
+
         Spacer(modifier = Modifier.height(16.dp))
-        
+
         Text(
             text = "Az objektum detektáláshoz szükségünk van a kamera használatára.",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
             modifier = Modifier.padding(horizontal = 32.dp)
         )
-        
+
         Spacer(modifier = Modifier.height(32.dp))
-        
+
         Button(
             onClick = onRequestPermission,
             modifier = Modifier
@@ -664,39 +674,9 @@ fun PermissionRequest(
 !!! info "Permission UI"
     Középre igazított layout kamera ikonnal és gombbal. A MaterialTheme használata biztosítja a konzisztens megjelenést light/dark mode-ban.
 
-### 6.2 Material Icons hozzáadása
+## MainActivity módosítása
 
-A kamera ikon használatához add hozzá a Material Icons függőséget a `build.gradle.kts` fájlhoz:
-
-```kotlin
-dependencies {
-    // ... egyéb függőségek ...
-    implementation("androidx.compose.material:material-icons-extended:1.5.4")
-}
-```
-
-Majd módosítsd az import részt a `CameraScreen.kt` fájlban:
-
-```kotlin
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CameraAlt
-import androidx.compose.material3.*
-```
-
-És használd az ikont:
-
-```kotlin
-Icon(
-    imageVector = Icons.Filled.CameraAlt,
-    modifier = Modifier.size(100.dp),
-    tint = MaterialTheme.colorScheme.primary,
-    contentDescription = "Camera"
-)
-```
-
-## 7. MainActivity módosítása
-
-### 7.1 MainActivity.kt
+### MainActivity.kt
 
 Módosítsd a `MainActivity.kt` fájlt:
 
@@ -710,7 +690,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.university.objectdetectionlab.ui.theme.ObjectDetectionLabTheme
+import hu.bme.aut.android.objectdetectionlab.ui.theme.ObjectDetectionLabTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -734,9 +714,11 @@ class MainActivity : ComponentActivity() {
     - Surface: Material Design alap konténer
     - CameraScreen: A fő képernyő komponens
 
-## 8. Alkalmazás tesztelése
+## Alkalmazás tesztelése
 
-### 8.1 Futtatás fizikai eszközön
+**Figyelem!** Az ML Kit alapértelmezett Object Detection API-ja csak 5 általános kategóriát támogat (Fashion good, Food, Home good, Place, Plant), és nem ad részletes osztályozást, ezért a legtöbb objektum ismeretlenként jelenhet meg a képernyőn.
+
+### Futtatás fizikai eszközön
 
 1. Engedélyezd a fejlesztői módot az Android eszközön:
    - Beállítások → A telefonról → Többször koppints a Build számra
@@ -746,7 +728,7 @@ class MainActivity : ComponentActivity() {
 4. Válaszd ki az eszközt az Android Studio-ban
 5. Kattints a Run gombra (zöld háromszög)
 
-### 8.2 Futtatás emulátorban
+### Futtatás emulátorban
 
 1. Indítsd el az emulátort
 2. Válaszd ki az emulátort az Android Studio-ban
@@ -754,7 +736,7 @@ class MainActivity : ComponentActivity() {
 
 **Megjegyzés**: Az emulátor virtuális kamerát használ, ami korlátozottabb, mint a fizikai eszköz kamerája.
 
-### 8.3 Az alkalmazás használata
+### Az alkalmazás használata
 
 1. Első indításkor megjelenik az engedélykérő képernyő
 2. Kattints az "Engedély megadása" gombra
@@ -763,13 +745,13 @@ class MainActivity : ComponentActivity() {
 5. Az alkalmazás valós időben detektálja és címkézi az objektumokat
 6. A képernyő alján megjelennek a detektált objektumok és azok megbízhatósági értékei
 
-!!! example "4. feladat beadandó (2 pont)"
+!!! example "3. feladat beadandó (2 pont)"
     * Kommitold a változtatásokat.
     * Készíts egy képernyőképet a futó alkalmazásról *egy detektált objektummal* (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe **`f4.png`** néven.
 
-## 9. Gyakori problémák és megoldások
+## Gyakori problémák és megoldások
 
-### 9.1 Build hibák
+### Build hibák
 
 **Probléma**: "Unresolved reference" hibák  
 **Megoldás**: Ellenőrizd, hogy minden függőség helyesen van-e hozzáadva és szinkronizáld a projektet
@@ -777,7 +759,7 @@ class MainActivity : ComponentActivity() {
 **Probléma**: Version conflict  
 **Megoldás**: Frissítsd a függőségeket a legújabb kompatibilis verziókra
 
-### 9.2 Futásidejű hibák
+### Futásidejű hibák
 
 **Probléma**: Az alkalmazás összeomlik indításkor  
 **Megoldás**: Ellenőrizd az engedélyeket az AndroidManifest.xml fájlban
@@ -789,9 +771,9 @@ class MainActivity : ComponentActivity() {
 
 ## Opcionális feladat (megajánlott jegyért):
 
-Módosítsd az alkalmazást, hogy egy saját, LiteRT alapú modellt használjon!
+Módosítsd az alkalmazást, hogy egy saját, LiteRT alapú modellt használjon, amely pontosabb objektum detektálást tesz lehetővé!
 
-### 10.1 Egyéni modellek használata - Példa
+### Egyéni modellek használata - Példa
 
 Az ML Kit támogatja egyéni TensorFlow Lite modellek használatát:
 
