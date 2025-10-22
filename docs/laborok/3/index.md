@@ -747,7 +747,7 @@ class MainActivity : ComponentActivity() {
 
 !!! example "3. feladat beadandó (2 pont)"
     * Kommitold a változtatásokat.
-    * Készíts egy képernyőképet a futó alkalmazásról *egy detektált objektummal* (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe **`f4.png`** néven.
+    * Készíts egy képernyőképet a futó alkalmazásról *legalább egy detektált objektummal* (emulátoron vagy saját készüléken), és mentsd el a repository gyökerébe **`f3.png`** néven.
 
 ## Gyakori problémák és megoldások
 
